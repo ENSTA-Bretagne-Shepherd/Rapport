@@ -1,0 +1,15 @@
+
+# Usual stuff
+.gitignore
+.idea/
+
+# Latex stuff
+Rapport2A.bib
+
+# Build
+build
+auxil
+out
+
+# Backup files
+*.bak
