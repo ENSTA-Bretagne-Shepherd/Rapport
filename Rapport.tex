@@ -54,28 +54,38 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 
 %page de garde
 \begin{titlepage}
-\title{ \normalsize \textsc{Project Report}
-        \\ [1.0cm]
-        \HRule{} \\
-        \LARGE \textbf{\uppercase{SHEPHERD Project}}
-        \HRule{} \\ [0.5cm]
-        \textsc{\textbf{ENSTA Bretagne}}\\
-		[0.5cm]
-        \normalsize \today \vspace*{5\baselineskip}}
-        
+    \title{ %SHEPHERD REPORT
+    		\normalsize \textsc{Project Report}
+            \\ [0.5cm]
+            \includegraphics[scale=0.5]{image/logo_ensta.png} % Ou autre image
+            \\ [1.0cm]
+            \HRule{} 
+            \\ [1.0cm]
+            \LARGE \textbf{\uppercase{SHEPHERD Project}} 
+            \\ [0.5cm]
+            \HRule{} 
+            \\ [0.5cm]
+            \includegraphics[scale=0.5]{image/logo_ensta.png}
+            %\\
+            %\textsc{\textbf{ENSTA Bretagne}}
+            \\ [0.5cm]
+            \normalsize \today \vspace*{5\baselineskip}
+    }
 
-\date{}
 
-\author{
-		\textbf{Student}\\
-        \textsc{ROB} \\
-        \textsc{ENSTA Bretagne} \\
-        \\
-        \textbf{Supervisor}\\
-        \textsc{Luc Jaulin}\\
-        \textsc{ENSTA Bretagne} }
+    \date{}
 
-\maketitle
+    \author{
+            \textbf{Student}\\
+            \textsc{ROB} \\
+            \textsc{ENSTA Bretagne} \\
+            \\
+            \textbf{Supervisor}\\
+            \textsc{Luc Jaulin}\\
+            \textsc{ENSTA Bretagne} 
+    }
+
+    \maketitle
 \end{titlepage}
 
 %page blanche
@@ -188,7 +198,7 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 \newpage
 
 	\begin{center}
-	\textbf{\LARGE{Conclusion}}
+		\textbf{\LARGE{Conclusion}}
 	\end{center}
 
 \vspace{5cm}
