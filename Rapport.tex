@@ -28,6 +28,8 @@
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 %Pour les galerie d'images
 \usepackage{subfig}
+%Pour les codes sources
+\usepackage{listings}
 
 %====================== INFORMATION ET REGLES ======================
 
@@ -37,8 +39,7 @@
 
 \hypersetup{							% Information sur le document
 pdfauthor = {Simon CHANU},			% Auteurs
-pdftitle = {Internship Report -
-			Obstacle avoidance for an autonomous Sailboat},			% Titre du document
+pdftitle = {Shepherd Report},			% Titre du document
 pdfsubject = {},		% Sujet
 %pdfkeywords = {Tag1, Tag2, Tag3, ...},	% Mots-clefs
 pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
@@ -124,7 +125,7 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 \setcounter{page}{0}
 \newpage
 
-\chapter{Chapter}
+\chapter{Presentation du projet Shepherd}
 \section{Section}
 \subsection{Subsection}
 
@@ -153,7 +154,7 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 		\item item2
 	\end{itemize}
 
-\chapter{Chapter}
+\chapter{Simulation}
 \section{Section}
 \subsection{Subsection}
 \subsection{Subsection}
@@ -193,6 +194,91 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 		\item \textbf{Monitor}\\
 			Text4
 	\end{itemize}
+    
+\chapter{Display}
+\section{OpenGL}
+\subsection{presentation}
+
+Open Graphics Library (OpenGL) is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics. The API is typically used to interact with a graphics processing unit (GPU), to achieve hardware-accelerated rendering.
+
+We chose to use OpenGl 1.1 as a soft and reliable 3d rendering system. OpenGl is a low level rendering library. Unlike high level graphic engine such as Unity, it is easy to print vector fields and soft graphic that are easy to see. With realistic graphics, it can be difficult to see the data between the reflects of the light and the real opacity of watter for example. With Opengl, transparency of watter can be adjusted for a better visualisation.
+
+OpenGl does not work alone. It has to be integrated in the window manager of the operating system. An open source library SDL (Simple Direct media Layer) enables to use the graphic interface of most of the operating systems. Moreover, it provides keyboards and mouse support so that the user can navigate in the 3d environnement and interact with the window. SDL provides also a lot of features such as sound handling and other device support.
+ 
+\subsection{3d features}
+
+The 3d geometric object that we print are the sea, the boats, the buoys, the vector fields, the grid pattern and the localisations of the intervals. The sea is made of two layer of transparent blue sqares, so that looking to the sea from the outside looks darker that from the inside. And everything that is in the sea looks blue. The boats geometry have been recovered from an older sailboat control simulation. The veil and rudder are movable. The buoys are simple red spheres.
+
+
+\subsection{camera control}
+
+The camera control system is a first person view. The camera can be controlled in the six local axis of the view (three rotations and three translations) thanks to the mouse. This enables a practical and intuitive navigation in all directions.
+
+The mouse wheel enables to move forward and backward. holding the left mouse button of the camera while moving the mouse moves the scene perpendicularly to the camera. holding the right mouse button while moving the mouse rotates the camera on an axis perpendicular to the camera axis. holding both right and left button enables to rotate the camera on its axis.
+
+Camera handling is often used by an extern 3 by 3 matrix system that has to be implemented. However, this time, only the OpenGl transformation system has been used to control the camera. OpenGl possessed its own matrix 4 by 4 stack that includes rotation and translation and also includes multiplication function and generation of basic matrix such as rotation and translation matrix. The purpose of this matrix stack is to apply successive affine transformation to the geometry. But we can use it as a computationnal tool. OpenGl provides a function to store in our program the current transformation matrix. So to compute matrix multiplication and rotation matrix generation, we will store the current matrix transformation in a variable; load the matrix we want on the opengl matrix stack; compute transformations; get the result in an other variable; put back the initial transformation result so that opengl has seen nothing. 
+
+\section{Unity3D}
+\subsection{Presentation}
+
+% IMAGE: Logo Unity
+
+Unity3D is a game engine developed by Unity Technologies. It is widely used in the developpment of video games, especialy on mobile devices and websites because it is one of the more lightweight game engine available. It uses the aforementioned OpenGL API to use the processing power of the machine it is installed on. It also provided an abstraction level allowing the programmer to easily add 3D Objects in a scene, manage lighting option, texture and many other functionalities. Unity also offers a physics engine that can compute collision, gravity as well as more complicated patterns such as moving cloth and water. 
+
+In our project we use Unity as a graphical engine, we choose not to use the physic engine in order to have complete control over the behaviours of the sailboats and buoys. The simulation program computes the state of the world, this is then send to Unity that displays the new state of the world. Because Unity is intended to be used more as a pleasing graphical tool than a exact representation of the simulation, liberties may be taken on the position of the objects in order to obtain smoother movement.
+
+\subsection{Communication with the simulation}
+\subsubsection{Server-Client link}
+
+To comunicate between the simulation and Unity, a client-server architecture has been choosen. This choice has servral advantages:
+\begin{itemize}
+\item A modular architecture: enabling the two programs to work independantly and making the development of the programs easier to split into two separate teams.
+\item An online architecture: enabling the programs to run on a same machine or on distant machines
+\item A language agnostic architecture: enabling the simulation and the display to use different languages (C++ for the simulation, C\# for Unity)
+\end{itemize}
+
+\subsubsection{JSON format}
+
+To communicate data, JSON parsing is used. This method format variables (test, numbers, etc) into a text that contains all the variables and that can be easily extracted by Unity. JSON was introduced by Javascript but librairies are know available on most mainstream languages making it an ideal solution to communicate data between two languages
+
+\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+    commentstyle=\color{black},
+}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[caption=JSON format, frame=single]
+{
+    "Sailboat":
+    {
+        "name":"Auv0",
+        "sailYaw":-13.1802,
+        "x":-19.2049,
+        "y":20.338,
+        "yaw":-296.908
+    }
+}
+\end{lstlisting}
+
+This formating made it esay to add a the buoys later in the project. % TODO
+
+\subsection{Unity Objects}
+\subsubsection{Graphical Objects}
+
+% IMAGE: d'un objet
+
+\subsubsection{SimulationManager}
+
+SimulationManager is the main object of the scene. It has two scripts TCPServer.cs and SimulationManager.cs that provide communication with the simulation and dynamically instanciate the objects (sailboats and buoys). 
+
+TCPServer.cs is the implementation of the client-server architecture. It listens to the simulation and record a stream of one or sevral JSON strings. This stream is then processed to extract individual JSON string that are then send to SimulationManager.cs.
+
+SimulationManager.cs extract the data of the messages from TCPServer.cs and either create a new object if the message corespond to a new object or update the state of an existing entity. % TODO
+
+\subsection{Result}
+
+% IMAGE
 
 % ===================== Conclusion ====================
 \newpage
