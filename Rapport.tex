@@ -55,42 +55,40 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 
 %page de garde
 \begin{titlepage}
-    \title{ %SHEPHERD REPORT
-    		\normalsize \textsc{Project Report}
-            \\ [0.5cm]
-            \includegraphics[scale=0.5]{image/logo_ensta.png} % Ou autre image
-            \\ [1.0cm]
+    \title{ \normalsize \textsc{Project Report} 
+    		\\ [0.5cm]
+            \includegraphics[scale=0.6]{image/logo_SHEPHERD.JPG} % Ou autre image
+            \\ [0.3cm]
             \HRule{} 
-            \\ [1.0cm]
+            \\ [0.5cm]
             \LARGE \textbf{\uppercase{SHEPHERD Project}} 
-            \\ [0.5cm]
+            \\ [0.20cm]
             \HRule{} 
-            \\ [0.5cm]
-            \includegraphics[scale=0.5]{image/logo_ensta.png}
+            \\ [1.0cm]
+            \includegraphics[scale=0.6]{image/logo_ENSTA.jpg}
             %\\
             %\textsc{\textbf{ENSTA Bretagne}}
             \\ [0.5cm]
-            \normalsize \today \vspace*{5\baselineskip}
+            \normalsize \today \vspace*{0\baselineskip}
     }
 
-
     \date{}
-
+    
     \author{
-            \textbf{Student}\\
-            \textsc{ROB} \\
-            \textsc{ENSTA Bretagne} \\
+            \textbf{Students}\\
+            \textsc{El Jawad.A,  Chanu.S, Sola.G, Welte.A, Soulie.C, Benet.P, Mehdi.N, } \\
+            \textsc{Galland.A, Barronier.R, El Abdalaoui.Z, Finand.C, Zhu.L, Pertierre.S, } \\
+            \textsc{Ennouhi.F, Bernardes.E, Tanguy.F} \\
             \\
             \textbf{Supervisor}\\
-            \textsc{Luc Jaulin}\\
-            \textsc{ENSTA Bretagne} 
+            \textsc{Luc Jaulin, ENSTA Bretagne} 
     }
 
     \maketitle
 \end{titlepage}
 
 %page blanche
-\newpage
+%\newpage
 ~
 %ne pas numéroter cette page
 \thispagestyle{empty}
@@ -99,7 +97,7 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 % Abstract
 \begin{abstract}
 
-	Abstract
+	\footnote{Author : Simon CHANU} The SHEPHERD Project aims to command a swarm of robotic oceanographic buoys by the astute use of the different directions of the current at along the water column, with the help of an acoustic localization system provided by robotic sailboats acting as shepherds. This paper describes the simulation created to validate the foundations of the project. This simulation uses simple models and equations to effectively command a swarm of robots.
 
 \end{abstract}
 
@@ -125,75 +123,78 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 \setcounter{page}{0}
 \newpage
 
-\chapter{Presentation du projet Shepherd}
-\section{Section}
-\subsection{Subsection}
+\chapter{Presentation of the Shepherd project}
+\section{Given issue}
+\section{Our solution}
+\section{TDOA method}
+\subsection{Introduction}
+\footnote{Section written by E. Bernardes and S. Pertierre} 
+In our settings we have four boats that should simultaneously send signals to the buoy, informing their positions (known due to each boat's GPS system) and time of emission (each boat has also an internal clock, considered to be synchronized). 
+%
+The buoys have to be programmed in a way that make it possible for them to receive these data and calculate their position. 
 
-	\begin{center}
-		\includegraphics[scale=0.5]{image/logo_ensta.png}
-	\end{center}
+One possible way to solve this problem is to put a clock inside each buoy.% make it send a back signal to the boats. 
+%
+In this way, using the fact that we know the signal's velocity in the sea, we can easily calculate the distances of the buoy to each one of the boats by doing the following calculation:
+\begin{equation}
+d_n = ||p - q_n|| = c(t_n - t_0)
+\label{eq:distance}
+\end{equation}
+Where $d_n$ is the distance of the buoy to the $n$th boat, $q_n = (q_{nx},q_{ny},q_{nz})$ is the position of said boat, $p = (p_x,p_y,p_z)$ is the buoy's position in the sea, $c$ is the signal's velocity in the medium, $t_0$ is the time of emission and $t_n$ is the time when the buoy receive the $n$th boat's signal. 
+%
+We can calculate all distances in this way and then triangulate the buoy's position.
 
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[scale=0.5]{image/logo_ensta.png}\\
-		\caption{caption}
-	\end{figure} % http://www.boattest.com/view-news/4388_finnish-archipelago-aland-islands-for-exciting-summer-cruising
+It is indeed a simple and efficient method of calculation. Nevertheless, it can be difficult to guarantee that the buoy's internal clock is well synchronized with those of the boats, raising the possibility of high uncertainties in the calculations.
+%
+It is not impossible to do so, but the needed precision clock can be expensive. The Time Difference of Arrival (TDOA) method is proposed to replace this method of calculation and overcome this difficulty.
+%
+% TODO: INSERT BOATS AND BUOY FIGURE
+% \label{fig:boats_buoy_signals}
+\subsection{Method principle}
+The method consists in substituting the buoy's clock by??? a chronometer.
+%
+The chronometer is not capable of knowing the exact moments of the signals arrivals, but it is able to keep track of the time difference between each signal.
 
-	%\cite{aland_UAS}
-	\footnote{footnote}
+When the buoy receives the first boat's signal, if launches the chronometer and waits for the arrival of the other signals, keeping track of the time between then.
+%
+They buoy stores then the values $\tau_2 = t_2 - t_1$, $\tau_3 = t_3 - t_1$ and $\tau_4 = t_4 - t_1$; as shown in the Figure \ref{fig:time_differences}.
+%
+% TODO: INSERT TIME DIFFERENCES FIGURE
+% \label{fig:time_differences}
+The equation \ref{eq:distance} is still valid, and applying it to our project, we have the system of linear equations described in \ref{eq:distance_system}.
+\begin{align}
+d_1 = ||p - q_1|| &= c(t_1 - t_0) \nonumber \\
+d_2 = ||p - q_2|| &= c(t_2 - t_0) \\
+d_3 = ||p - q_3|| &= c(t_3 - t_0) \nonumber \\
+d_4 = ||p - q_4|| &= c(t_4 - t_0) \nonumber 
+\label{eq:distance_system}
+\end{align}
 
-\subsection{Subsection}
-
-\section{Section}
-\subsection{Subsection}
-\subsection{Subsection}
-
-	\begin{itemize}
-		\item item1
-		\item item2
-		\item item2
-	\end{itemize}
-
-\chapter{Simulation}
-\section{Section}
-\subsection{Subsection}
-\subsection{Subsection}
-\subsection{Subsection}
-
-\section{Section}
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
-\subsubsection{Subsubsection}
-
-\paragraph{Paragraph}
-
-	\begin{equation}
-		z = A*exp(-t^2)
-	\end{equation}
-	\begin{equation}
-		t = B*((x+a)^2 + (y+b)^2)
-	\end{equation}
+Substituting the time differences $\tau_n$ in \ref{eq:distance_system}, we have the following final system:
+\begin{align}
+||p - q_1|| &= c(t_1 - t_0) \nonumber \\
+||p - q_2|| &= c(t_1 + \tau_2 - t_0) \\
+||p - q_3|| &= c(t_1 + \tau_3 - t_0) \nonumber \\
+||p - q_4|| &= c(t_1 + \tau_4 - t_0) \nonumber 
+\label{eq:distance_tdoa}
+\end{align}
+Since $q_n$, $c$, $t_0$ and $\tau_n$ are all known, then the only unknowns in the system are $t_1$, $p_x$, $p_y$ and $p_z$. Since we have 4 equations and 4 unknowns, we can easily solve this system to find the $p$ vector.
+%
+Since the buoy's are also equipped with ballasts, we also known the value $p_z$ in our case, our number of equations is bigger than our number of unknown variables.
 
 
-	\textit{Textit}\\
-	Text \\
+\chapter{Team management methods}
+\section{Scrum}
+\section{Github}
 
-	\textit{Textit2}\\
-	Text2 \\
+\chapter{Simulation theory}
+\section{Simulation of the environment}
+\section{Simulation of the sailboats}
+\section{Simulation of the buoys}
 
-\vspace{2cm}
-
-	\begin{itemize}
-		\item \textbf{Simulate}\\
-			Text1
-		\item \textbf{Playback}\\
-			Text2
-		\item \textbf{Log}\\
-			Text3
-		\item \textbf{Monitor}\\
-			Text4
-	\end{itemize}
+\chapter{Simulation architecture}
+\section{ROS presentation}
+\section{ROS architecture}
     
 \chapter{Display}
 \section{OpenGL}
@@ -276,7 +277,7 @@ TCPServer.cs is the implementation of the client-server architecture. It listens
 
 SimulationManager.cs extract the data of the messages from TCPServer.cs and either create a new object if the message corespond to a new object or update the state of an existing entity. % TODO
 
-\subsection{Result}
+\subsection{Results}
 
 % IMAGE
 
