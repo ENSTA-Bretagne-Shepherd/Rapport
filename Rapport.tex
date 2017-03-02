@@ -397,7 +397,7 @@ WIP Simon
 
 WIP Simon
 
-\chapter{Simulation theory}
+\chapter{Simulation theory} \label{section:simulation}
 \section{Simulation of the environment}
 
 WIP Simon
@@ -455,16 +455,27 @@ $\delta = \frac{\rho_f}{\rho_b}$
 is the ratio of the fluid density $\rho_f$ to the density of the buoy $\rho_b$, and
 $\mu \simeq 1$ is the dynamic viscosity ofthe water.
 $\delta \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}$ represents the force per unit volume that would be exerted by the fluid on a fluid particle placed at the position of the impurity (similarly to the Archimede's principle).The second terms represents the Stockes drag felt by the buoy whose velocity is different from the flow velocity.\\
+
+This equation does not yet consider the dsiplacement induced by the ballasts.The ballast can be compared as a syringe filled with water, connected to the extern environment. A piston pushes (or pulls) water ouside (or inside) the buoy, changing its volumic mass.
+The command received by the simulation from the controller is understood by the simulation as the desired speed for the piston in the ballast.
+The vertical acceleration of the buoy is then computed using Newton's second law.\\
+\begin{equation}
+\frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w (\left V- \right )
+\end{equation}
+
 In our simulation, we tried out two different two-dimensional stream equation :
 \begin{equation}
 \psi = A*cos(a_x x+a_y y)
 \end{equation}
 where $A=2$, and $a_x = a_y = 1$
 \begin{equation}
-\psi = \sum \frac{\left \| X-X_i \right \|^2 }{R_i ^2}e^{ -\frac{\left \| X-X_i \right \|^2 }{R_i ^2}}
+\psi = \sum \psi _i \frac{\left \| \mathbf{X}-\mathbf{X_i} \right \|^2 }{R_i ^2}e^{ -\frac{\left \| \mathbf{X}-\mathbf{X_i} \right \|^2 }{R_i ^2}}
 \end{equation}
 The first equation creates for small values of A,$a_x$ ,$a_y$ what looks like a chaotic behavior for the buoys.The associated current is a series of vortex close to each other.\\
-The second equation is the equation of a stream composed of a multiple water whirl 
+
+The second equation is the equation of a stream composed of a multiple water whirl indexed by i. $\mathbf{X_i}$ is the center of the water whirl i, $\psi _i$ represents the rotation speed of the whirl, and $R_i$ represents its range of effect. This representation match correctly the observations of the ocean stream close to the surface. \\
+
+The simulation will cumpute the dispacement of the buoys using the Euler method. The main drawback of using Euler, is the fact that we have to know the exact duration between every iterations. If it is not the case, after a certain period of time, the positions of the buoys might vary from the reality. However, ROS is able to calculate precisely these durations, making the simulation closer to the reality. 
 
 
 
@@ -478,7 +489,7 @@ ROS (Robot Operating System) is the most commonly used middleware in robotic app
 \includegraphics[scale=0.4]{image/ros.png}
 \end{center}
 
-The Middleware are computer software that allow us to develop new program in a modular fashion. It work as an interface between the different block of our programs. It allow programmer to begin writing their code with a basis.The block Architecture facilitate the flow between simulation and reality : changing the simulation block by real data from real sensor doesn't necessitate to change the whole code. Middleware are frequently used in Simulation, Network system and Robotics.\\
+The Middleware are computer software that allow us to develop new program in a modular fashion. It work as an interface between the different block of our programs. It allows programmer to begin writing their code with a basis.The block Architecture facilitate the flow between simulation and reality : changing the simulation block by real data from real sensor doesn't necessitate to change the whole code. Middleware are frequently used in Simulation, Network system and Robotics.\\
 
 ROS works with a Node architecture, our different blocks become Node in a web of shared Data. Every shared information are Topic that can be broadcasted by Ros's publisher and any node can subscribe to receive update on those informations.Those subscriber can launch Callback function when they receive new data, giving us the possibility to apply traitement to those data. Ros Node can be written in a lot of programming language but the two most commonly used are Python and C++. Moreover as the programs are not directly interfaced but use ROS, we can write some nodes in python and some in C++ and make them communicate without any compatibility problem. We exploited this feature as some of our developper prefer Python while some choose C++.\\
 
@@ -565,7 +576,20 @@ int main(int argc, char **argv)
 }
 \end{lstlisting}
 \section{ROS architecture}
+	\footnote{written by Alaa El Jawad and Sergio Pertierre}
     
+ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there is so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented into project SHEPHERD, demonstrating the facilities of using this middleware.
+\subsection{Overview of the architecture}
+	
+\subsection{Detailled architecture of sailboats and buoys}
+
+Every buoy and sailboat basically works the same way. There are three main nodes that do most of the computation needed for the simulation of one of these components
+    
+    \begin{itemize}
+    \item \textbf{Simulation node:} this node handles the simulation of the robot (sailboat or buoy - see chapter \ref{section:simulation}). It subscribes to the environment parameters and the command published by the regulator. Then it simulates the robot for a time step and publishes the real state of the robot and a noisy state that corresponds to the information given by the sensors.
+    \item \textbf{Localisation node:} this node handles the localisation of the robot. It subscribes to the noisy state of the robot (i.e. the information given by the sensors) and estimates the position of the robot
+    \item \textbf{Regulation node:}
+    \end{itemize}
 \chapter{Display}
 
 \section{Matplotlib}
