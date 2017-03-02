@@ -267,7 +267,7 @@ We have thereby 4 equations:
 ||p - q_2|| &= c(t_1 + \tau_2 - t_0) + \epsilon_1\\
 ||p - q_3|| &= c(t_1 + \tau_3 - t_0) + \epsilon_2\nonumber \\
 ||p - q_4|| &= c(t_1 + \tau_4 - t_0) + \epsilon_3\nonumber\\
-\label{eq:distance_tdoa_ep}
+\label{eq:distance_tdoa_}
 \end{align}
 
 Known variables are: $c$, $t_0$, $q_i$, $\tau_i$.
@@ -548,7 +548,7 @@ $\delta_s^{max}$ & maximum angle of the sail(input) & rad\\
 
 \subsection{Control algorithm}
 
-Given 2 points $\mathbf{a}$ and $\mathbf{b}$ to pass through, a sailboat can be controlled by a model-free method \cite{robmob}\cite{Jaulin2013}. As we have mentioned in previous subsection, the sailboat has two inputs which are the rudder angle $u_1 = \delta_r$ and the maximum angle of the sail $u_2 =\delta_s^{max}$. We realized a controller by Algorithm \ref{alg_sailboat_controller}, witch was proposed my Mr.Jaulin on his paper \cite{jaulin2013interval}.\\
+Given 2 points $\mathbf{a}$ and $\mathbf{b}$ to pass through, a sailboat can be controlled by a model-free method \cite{robmob}. As we have mentioned in previous subsection, the sailboat has two inputs which are the rudder angle $u_1 = \delta_r$ and the maximum angle of the sail $u_2 =\delta_s^{max}$. We realized a controller by Algorithm \ref{alg_sailboat_controller}, witch was proposed my Mr.Jaulin on his paper \cite{jaulin2013interval}.\\
 
 \begin{algorithm}
 
@@ -924,7 +924,7 @@ Once the launch files executed, we have the following display. The sailboats lea
 \begin{figure}[H]
   \centering
   \includegraphics[scale = 0.4]{image/display3.png}
-  \label{Flow2}
+  \label{Flow}
   \caption{Display with matplotlib plotting }
 \end{figure}
 
@@ -1153,15 +1153,10 @@ We got a great deal of progress from working on this project. In the three month
 
 % ====================== Biblio ======================
 
-
 %choix du style de la biblio
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 %inclusion de la biblio
-
-% I have refrenced this part and please do not comment it
-\bibliography{Rapport2A}
-
-
+%\bibliography{Rapport2A}
 %voir wiki pour plus d'information sur la syntaxe des entrées d'une bibliographie
 
 
