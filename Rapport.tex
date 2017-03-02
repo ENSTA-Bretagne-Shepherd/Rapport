@@ -460,7 +460,7 @@ This equation does not yet consider the dsiplacement induced by the ballasts.The
 The command received by the simulation from the controller is understood by the simulation as the desired speed for the piston in the ballast.
 The vertical acceleration of the buoy is then computed using Newton's second law.\\
 \begin{equation}
-\frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w (\left V- \right )
+\frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w (\left V-\xi S \right )
 \end{equation}
 
 In our simulation, we tried out two different two-dimensional stream equation :
@@ -580,7 +580,7 @@ int main(int argc, char **argv)
     
 ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there is so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented into project SHEPHERD, demonstrating the facilities of using this middleware.
 \subsection{Overview of the architecture}
-	
+	In this part we will show
 \subsection{Detailled architecture of sailboats and buoys}
 
 Every buoy and sailboat basically works the same way. There are three main nodes that do most of the computation needed for the simulation of one of these components
