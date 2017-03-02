@@ -462,7 +462,7 @@ The vertical acceleration of the buoy is then computed using Newton's second law
 \begin{equation}
 \frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w \frac {\left ( V-\xi S \right )}{m}
 \end{equation}
-where m is the mass of the buoy, V its volume when the ballast is empty, and $\xi$ the place of the piston in the ballast (if $\xi = 0$ the ballast is empty). $\rho_w$ 
+where m is the mass of the buoy, V its volume when the ballast is empty, and $\xi$ the place of the piston in the ballast (if $\xi = 0$ the ballast is empty). $\rho_w$ is the volumic mass of the water, and $g$ is the gravitation acceleration.
 
 
 In our simulation, we tried out two different two-dimensional stream equation :
@@ -578,19 +578,21 @@ int main(int argc, char **argv)
 }
 \end{lstlisting}
 \section{ROS architecture}
-	\footnote{written by Alaa El Jawad and Sergio Pertierre}
-    
+	\footnote{written by Alaa El Jawad and Sergio Pertierre}  
 ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there is so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented into project SHEPHERD, demonstrating the facilities of using this middleware.
 \subsection{Overview of the architecture}
-	In this part we will show
+
 \subsection{Detailled architecture of sailboats and buoys}
 
 Every buoy and sailboat basically works the same way. There are three main nodes that do most of the computation needed for the simulation of one of these components
     
     \begin{itemize}
     \item \textbf{Simulation node:} this node handles the simulation of the robot (sailboat or buoy - see chapter \ref{section:simulation}). It subscribes to the environment parameters and the command published by the regulator. Then it simulates the robot for a time step and publishes the real state of the robot and a noisy state that corresponds to the information given by the sensors.
-    \item \textbf{Localisation node:} this node handles the localisation of the robot. It subscribes to the noisy state of the robot (i.e. the information given by the sensors) and estimates the position of the robot
-    \item \textbf{Regulation node:}
+    \item \textbf{Localisation node:} this node handles the localisation of the robot. It subscribes to the noisy state of the robot (i.e. the information given by the sensors), estimates and publishes the position of the robot.
+    \item \textbf{Regulation node:} this node regulates the robot according to the objective it was given. It subscribes to the position of the robot, deduces the command to correct the trajectory and publishes it.
+    
+    
+
     \end{itemize}
 \chapter{Display}
 
