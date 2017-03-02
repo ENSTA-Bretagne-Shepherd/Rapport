@@ -258,6 +258,31 @@ Since $q_n$, $c$, $t_0$ and $\tau_n$ are all known, then the only unknowns in th
 %
 Since the buoy's are also equipped with ballasts, we also known the value $p_z$ in our case, our number of equations is bigger than our number of unknown variables.
 
+\subsection{Geolocation problem with random error}
+\footnote{The subsection "1.4.3 Geolocation problem with random error" were written by Lei Zhu.}
+We assume we are in 2D and there are 4 sailboat (as described in our problem definition). We generate a gaussian random variable $\epsilon_i$ with mean  0 and variance $e_i$. We not the time arrival of source 1 signal $t_1$, it may contain the receiver clock offset.\\
+We have thereby 4 equations: 
+\begin{align}
+||p - q_1|| &= c(t_1 - t_0) + \epsilon_0\nonumber \\
+||p - q_2|| &= c(t_1 + \tau_2 - t_0) + \epsilon_1\\
+||p - q_3|| &= c(t_1 + \tau_3 - t_0) + \epsilon_2\nonumber \\
+||p - q_4|| &= c(t_1 + \tau_4 - t_0) + \epsilon_3\nonumber\\
+\label{eq:distance_tdoa_}
+\end{align}
+
+Known variables are: $c$, $t_0$, $q_i$, $\tau_i$.
+
+Unknown variables are: $p$, $t_1$,$\epsilon_i$
+
+The problem is undetermined because of the noise on the estimation of distances.
+
+The Geolocation problem becomes the following minimization problem:
+
+\begin{equation}
+J(\mathbf{x}, t_1) = \sum \Big ( ||\mathbf{x-x_1}|| - c(\tau_i+t_1-t_0) \Big )^2 / e_i^2 ,\tau_0=0
+\end{equation}
+
+
 \chapter{Team management methods}
 \section{Scrum}
 
@@ -368,7 +393,35 @@ Git is now the most widely used source code management tool with 42.9\% of profe
 
 \subsubsection{How does it work ?}
 
+In this section, we will focus on the practical use of Git. First of all, git is a command line software. The main commands are explained below. 
+\\
+\paragraph{Commands} 
+\begin{itemize}
+	\item \textbf{git clone} : clone a repository from a remote server to a local folder.
+    \item \textbf{git status} : give the current status of the repository and the state of its files. It gives informations about the changes in the repository : which file has been modified, deleted, created, which modification will be sent to the remote in case of a commit push. 
+    
+    \item \textbf{git pull} : the main command to recover the changes from the remote server. If some changes have been made to your local copy of the code, it will warn you an try an automatic merge of the files. If there is conflicts that can't be resolved automatically, it will warn the user and let it take care of them. It advised to commit any changes to your local copy before pulling from the remote. 
+    
+    \item \textbf{git add} : validate the changes so can be inserted in a commit. 
+    
+    \item \textbf{git commit} : register the changes of the local repository so they can be sent to the remote. A git commit must have an explanatory message which describes the changes and why did they happened. This message can be short or long but an input is required from the user. A good habit is to always make comprehensive messages about the changes, so if there is any problem, the code can be easily reverted to a previous commit.
+    
+    \item \textbf{git push} : the main command to send the local changes to the remote. It sends the commit you have registered with git commit. If any changes has been made on the remote and they haven't been pulled, then the push will be rejected. The user must pull the changes or merge the codes to be able to push all the commits. 
+    
+    \item \textbf{git merge} : merge two version of a repository together. It takes one version and merge inside the code from the other version. If the merge can't be done automatically because of unresolvable conflicts, a merging process will begin. With a git status it is possible to see the conflicting files. When the conflicting files have been modified, add them and commit them to resolve the merge.   
+    
+\end{itemize}
 
+\paragraph{Branches}
+
+As it was said above, the code can be split into different existing version among the same repository. These version are called branches. The figure \ref{fig:gitbranch_logo} explains how to use it effectively. 
+
+In a professional software project there is at least usually two branches : \textit{Master} and \textit{develop}. 
+\begin{itemize}
+	\item \textbf{Master} is the stable, reliable last working version of the code. It's the one customers will download.
+    \item \textbf{develop} is the unstable, but as stable as possible, development branch. This is the next iteration of the software. Any developed features end up in the \textit{develop} branch, waiting to be extensively tested before it is allowed to move into the \textit{master} branch
+    \item \textbf{Features branches} are usually the rest of the branches. They are created when an independent feature of the software is developed. The development can continue in the branch until finished. Then it can be merged into \textit{develop} for further testing.
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
@@ -377,46 +430,57 @@ Git is now the most widely used source code management tool with 42.9\% of profe
 	\label{fig:gitbranch_logo}
 \end{figure}
 
-You can find more about how to work collaboratively with git \href{https://www.atlassian.com/git/tutorials/comparing-workflows}{here}.
+This system simplify greatly the workflow. Each merge from develop into master is a new release. Each new feature has it's own branch. On the figure \ref{fig:gitbranch_logo}, it's possible to see this workflow : 
+\begin{enumerate}
+	\item A new improvement for the software is planned with several features (A and B). The \textit{develop} branch is already up to date with the \textit{master} branch.
+    \item The branches from the features are created. They both comes from \textit{develop}.
+    \item Some developers work on the features and add, commit then push some changes.
+    \item At some point, the dev team from \textit{Feature A} has finished their job. In order to always have the latest version, they merge the code from develop into their branch, resolve the conflicts on their branch, and debug the software. Then they merge automatically into \textit{develop} from \textit{Feature A}
+    \item The team of \textit{Feature B} does the same job after.
+    \item Then when the software is fully debugged and tested. The \textit{develop} branch can merge into \textit{master}. This is a release. 
+\end{enumerate}
+
+You can find more about how to work collaboratively with git \href{https://www.atlassian.com/git/tutorials/comparing-workflows}{here}. If you want to find tutorials about git, it's \href{https://openclassrooms.com/courses/gerez-vos-codes-source-avec-git}{here}.
 
 \subsection{Github}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{image/github.jpg}
+	\includegraphics[width=0.4\linewidth]{image/github.jpg}
 	\caption{Logo of Github}
 	\label{fig:github_logo}
 \end{figure}
 
-\subsection{Architecture of the project}
+Github is a website created in 2008 by Tom Preston-Werner, Chris Wanstrath and PJ Hyett. It provides an internet hosting service and an web based git and project manager. This website provides free remote servers to host the repositories. This access is public and anyone can see the source code pushed on on Github unless a subscription is paid.\\
+\\
+This website provides as well project management tools, such as a kanban board, a way to specify an track issues on the code, and a interface for most of the difficult git operations. The use of these services are free and require only an inscription.\\
+\\
+Our project being an open-source research project. The ease of use and the tools provided made this website the best candidate to host our remote repositories. Therefore we decided to create an organization on the website to host our repositories. \\
+\\
+This organization can be found at \href{https://github.com/ENSTA-Bretagne-Shepherd}{https://github.com/ENSTA-Bretagne-Shepherd}
+
+\subsection{Architecture of the project} 
+
 \subsubsection{First decentralized architecture}
 
-WIP Simon
+At first we decided to decentralize our work into 3 repositories : Shepherd-Simulation, Shepherd-Display, Shepherd-Localization. Then these projects would be included as submodules into Shepherd-Main. Another repository, called Ressources-internes-et-administration has been created to host our work documents on the software.\\
+\\
+It happened that this first approach was not very effective. Indeed several types of display have been developed and the number of repository has been multiplied. Moreover the communication between the different parts of the code was difficult to implement.
 
 \subsubsection{Migration on ROS}
 
-WIP Simon
-
-\subsubsection{Statistics}
-
-WIP Simon
+That's why a Shepherd-Ros-Structure repository has been created. We integrated the code from the other repository inside ROS. ROS is a middleware that will be presented later in the report. With this integration the project needs only one repository. As presented above, we follow the good rules of conduct in the use of git. Our master branch is the stable up-to-date version of the code and the develop is the development one.
 
 \chapter{Simulation theory} \label{section:simulation}
 \section{Simulation of the environment}
 
-WIP Simon
+\footnote{The section "3.1 Simulation of the environment" was written by Lei Zhu.}
 
-\section{Simulation of the sailboats}
+Taking the complexity of modeling a lac into consideration, we had made some simplifications to our simulated environment. \\
 
-\footnote{The section "3.2 Simulation of the sailboats" was written by Lei Zhu.}
+The situation of wind in the real world is really intricate. Even the most experienced meteorologist cannot predict the variation of wind for a 100\% accuracy. In our case, it is next to impossible to simulate the wind in an open sea area. Even if we generate randomly the force, this makes no sense except give out a confusing motion of the sailboat under irregular wind. Conversely, if we suppose the wind as constant, we don't really lost the similarity to real word. Meanwhile, we get a lot of time saved as well as the illustration simplified.\\
 
-\subsection{External forces and assumption}
-
-Chiefly, there are two kind of external forces can give out perceptible influence on our simulative sailboats: the wind and the wave. Since air and water are in touch with the sailboats directly, there is no force from the land. Among all the forces given by air and the water, the friction and damping are insignificant. Therefore we talk about our method for simulating the the wind and the wave.\\
-
-The situation of wind in the real world is really complicated. Even the most experienced meteorologist cannot predict the variation of wind for a 100\% accuracy. In our case, it is next to impossible to simulate the wind in an open sea area. Even if we generate randomly the force, this makes no sense except give out a confusing motion of the sailboat under irregular wind. Conversely, if we suppose the wind as constant, we don't really lost the similarity to real word. Meanwhile, we get a lot of time saved as well as the illustration simplified.\\
-
-For the part of waves, we studied the existing work by Mr.Ponte about the analytical solutions of plausible oceanic flows.The mathematic model of multiple 3D eddies is given as \ref{eq:eddies}. \\
+For the part of waves, we studied the existing work by Mr.Ponte about the analytical solutions of plausible oceanic flows.The mathematic model of multiple 3D eddies is given as Equation \ref{eq:eddies}. \\
 \begin{equation}
 \begin{aligned}
 \psi&= \sum \psi_i e^{-||\mathbf{x-x_i}||^2/R_i^2} \times \cos \frac{N}{c_n}(z+h)  \\
@@ -427,10 +491,25 @@ v &=\partial_x \psi = \sum \psi_i \frac{-2x(x-x_i)}{R_i^2} e^{-||\mathbf{x-x_i}|
 \end{aligned}
 \end{equation}\\
 
-This model and simulation of eddies enlightened us. . However, we find that the sailboat will always work on the sea level and we do not need a 3d simulation of the water. Therefore we chose to ignore the wave and Waves are not simulated eventually.\\
+This model and simulation of eddies enlightened us. However, we find that the sailboat will always work on the sea level and we do not need a 3D simulation of the water. Furthermore, from this model we take notice of that the water stream on the sea level is rather small than under the water. Therefore we chose to ignore the wave so that waves are not simulated eventually.\\
 
-In brief, we analyzed the complexity and compared the result of different choices, and finally we assume that the wind is constant and the wave is static.
+In brief, our simulated environment is under a series of assumption:
+\begin{itemize}
+\item There is no wave on the horizontal surface;
+\item The water stream is negligible;
+\item The wind is with unchangeable power and direction.
+\end{itemize}
 
+
+\section{Simulation of the sailboats}
+\footnote{The section "3.2 Simulation of the sailboats" was written by Lei Zhu.}
+\subsection{External forces and assumption}
+
+As explained in the previous chapter, we analyzed the complexity and compared the result of different choices, and finally we assume that the wind is constant and the water surface is static.\\
+
+Chiefly, there are two media, air and water, are in touch with the sailboats directly. Among all the forces given by air and the water, the friction and damping are insignificant. For this reason, there are also only two kinds of external forces can give out perceptible influence on our simulative sailboats: the wind and the wave. There is no force from the land. \\
+
+To sum up, we designed our method for simulating the the wind and the wave: the wave is supposed to be zero and the wind is a constant force with a fixed direction.
 
 \subsection{State representation}
 
@@ -471,12 +550,6 @@ $\delta_s^{max}$ & maximum angle of the sail(input) & rad\\
 
 Given 2 points $\mathbf{a}$ and $\mathbf{b}$ to pass through, a sailboat can be controlled by a model-free method \cite{robmob}. As we have mentioned in previous subsection, the sailboat has two inputs which are the rudder angle $u_1 = \delta_r$ and the maximum angle of the sail $u_2 =\delta_s^{max}$. We realized a controller by Algorithm \ref{alg_sailboat_controller}, witch was proposed my Mr.Jaulin on his paper \cite{jaulin2013interval}.\\
 
-This algorithm stands for the control of a sailboat with 3 sensors. That is to say, the heading $\theta$, the wind angle $\psi$ and the position of its physic center $\mathbf{m}=(x,y)$ can be captured all the time during its advance process. For the part of actors, $u_1$ and $u_2$ are the two motors to control the movement of sailboat. Therefore, the controller will give out $u_1$ and $u_2$ as output.\\
-
-In this algorithm, we used a very simple idea: when the error between the aim and reality surpass a threshold, the aim will be adjusted by a coefficient. Then with the help of two functions atan() and sawtooth, it is not complicated to generate a feedback.\\
-
-More concretely, we designed a 
-
 \begin{algorithm}
 
 \centering
@@ -499,6 +572,12 @@ More concretely, we designed a
 
 \end{algorithmic} 
 \end{algorithm}
+
+This algorithm stands for the control of a sailboat with 3 sensors. That is to say, the heading $\theta$, the wind angle $\psi$ and the position of its physic center $\mathbf{m}=(x,y)$ can be captured all the time during its advance process. For the part of actors, $u_1$ and $u_2$ are the two motors to control the movement of sailboat. Therefore, the controller will give out $u_1$ and $u_2$ as output.\\
+
+In this algorithm, we used a very simple idea: when the error between the aim and reality surpass a threshold, the aim will be adjusted by a coefficient. Then with the help of two functions atan() and sawtooth, it is not complicated to generate a feedback.\\
+
+More concretely, we designed a triangle path of side 100m for each sailboat. And 4 sailboats will work together to follow their triangles respectively.
 
 
 \section{Simulation of the buoys}
@@ -733,13 +812,30 @@ In the case of the sailboat (see figure \ref{fig:ros_sailboat}) the simulation n
 
 \chapter{Display} \label{section:display}
 
+\section{Simulink 3D Animation}\footnote{The section "5.1 Simulink 3D Animation" was written by Lei Zhu.}
+\subsection{Introduction}
+The Simulink 3D Animation product is a solution for interacting with virtual reality virtual systems models over time. It extends the capabilities of Simulink and MATLAB software into the world of virtual reality. The product provides a complete environment of creation, development and realization of 3D visual simulations. Comparing to other display method, the most significant of Simulink 3D Animation is its simplicity to starters. With around 10 lines of code or a simple control flow under Simulink, it can already generate a 3D simulation, which means we can easily use Simulink blocks and MATLAB apps and functions for connecting models to virtual reality worlds. Figure \ref{fig:simu3dan} shows a sailboat simulation with a simple Simulink control flow.\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.5]{image/simu3dan.jpg}
+  \caption{A sailboat simulation with simulink 3d Animation}
+  \label{fig:simu3dan}
+\end{figure}
+
+A beginner can do a visualization of real-time simulations after tens of minutes study. That is an advantage if we just have not much time to simulate, especially it is on 3D.\\
+
+\subsection{How does it work ?}
+
+It works by providing applications to link Simulink and MATLAB algorithms to 3D graphics objects. It allows us to view and check the dynamic behavior of the system in a virtual reality environment. The objects are represented in Virtual Reality Modeling Language (VRML), a standard 3D modeling language. We can animate a 3D world by changing its position, rotation, scale, and other object properties during desktop or real-time simulation. We can also inject virtual sensor signals and access the 3D animation data in Simulink or MATLAB for post-processing. Simulink 3D Animation includes viewers for rendering and interaction with virtual scenes. With 3D World Editor, we can create detailed scenes assembled from 3D models exported from CAD or web-based sources. We can incorporate multiple 3D scene views into the MATLAB figures and interact with these views by a hardware device as simple as a mouse.
+
 \section{Matplotlib}
 
 \subsection{Presentation}
 \footnote{Section written by N.Mehdi } 
 Matplotlib, created by John Hunter (1968-2012), is a Python 2D plotting library composed of several toolkits like 3D plotting, real-time plotting, mapping toolkits and more. With NumPy, Python provides an object oriented API for data programming and scientific visualizations sharing some features with MATLAB.
 
-\subsection{How does it work ?}
+\subsection{Operating Structure and Code Elements}
 
 Displaying a simple looking animation with matplotlib was the easier way to obtain an animated representation of the simulation running under ROS. To do so, we had to just create a ROS package dedicated to plotting a 2D simulation. It was one of the strengths to use Python and the associated libraries. Everything is running under the ROS ecosystem and we do not need to export the data from the simulation toward an external program. We access the data through regular subscribers.
 For more details on how the different ROS packages including the Python display, we could refer to the Chapter 4 Section 4.2. 
@@ -815,12 +911,12 @@ def update_center(msg, name):
         sailboats[name].cy = msg.data[1]
     else:
         pass
-
-
 \end{lstlisting}
 
-\subsubsection{The Sea Plot API}
-A separate module called seaplotapi was used to provide the drawing functions. Each functions within gives a Numpy array (vector or matrix), which is called in the main file for each drawn objects. 
+
+
+\subsubsection{Sea Plot Utility}
+A separate module called \textit{sea\_plot\_utility} was used to provide the drawing functions. Each function within gives a Numpy array (vector or matrix), which is called in the main file for each drawn objects. 
 \subsection{Result}
 
 Once the launch files executed, we have the following display. The sailboats leave a green trail behind them and the opacity of the buoys represent the depth and the black arrow gives the wind direction. 
@@ -1042,9 +1138,14 @@ We can also add some textures on the entities or some atmosphere sounds like sea
 
 \vspace{5cm}
 
-Conclusion
-\\
-None assigned here yet.
+\footnote{Section written by M. Fadil Ennouhi and L. Zhu, reviewed by Simon Chanu}
+In this project, we constructed a mathematical model as well as a simulation with visual display. At the very beginning, all the theoretical basic concerned are reviewed. We have used the method of interval analysis and TDOA, by which we built the basic equations. Next, we did several studies on the tools for better work condition and parfait group cooperation. Tools like GitHub and scrum bring us more efficiency . We worked as a group rather than only work separately on each party. Furthermore, we constructed the architecture to solve the simulation problem and let it be optimized. We have used ROS(Robot Operating System) as the kernel instrument. We simulated the environment, the boat and the buoys under ROS. At last we did some visual model on 2D and 3D platform. This allow us to explain the simulation to the public. The production of this experiment is quite useful in further researches.\\
+
+Despite of the ambitious nature of the SHEPHERD project, we remain confident of its feasibility. All the assumptions made in our working simulation remain compatible with the real world environment. We demonstrated in this report a working simulated prototype relying solely on existing techniques and sensors.\\
+
+As mentioned, the Robot Operating System coupled with GitHub enabled our relatively large team to work independently in small groups and each group handled a specific module of the project without risking the compatibility of the pieces. Perhaps the most noteworthy example of this seamless integration is the Unity video rendering which allows the viewer to quickly grasp the functioning and the purpose of the project while remaining faithful to the algorithms and physics of the project.\\
+
+We got a great deal of progress from working on this project. In the three months of activity, first of all, the most direct acquisition is on the professional techniques. We did not only practice the knowledge acquired in class, such as interval analysis, but also made ourselves more skilled by learning numerous new skills. We had 17 different mini courses in a variety of subjects. And each one gave us an opportunity to optimize our processes of work. In addition, we worked three months in a cooperative environment. Working as a team is not easy as imagined but we achieved this successfully. Solidarity and cooperation are the fruit for the effort we had payed.  Last but not the least, we experienced what a real project looks like. It is more close to a professional job, thus making us better and faster at adapting to a working life and rhythm after graduation.
 
 \newpage
 %récupérer les citation avec "/footnotemark"
@@ -1053,9 +1154,9 @@ None assigned here yet.
 % ====================== Biblio ======================
 
 %choix du style de la biblio
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 %inclusion de la biblio
-\bibliography{Rapport2A}
+%\bibliography{Rapport2A}
 %voir wiki pour plus d'information sur la syntaxe des entrées d'une bibliographie
 
 
