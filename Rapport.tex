@@ -471,7 +471,7 @@ The final form of the dynamic equation is then
 \frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w \frac {\left ( V-\xi S \right )}{m}
 \end{matrix}\right.
 \end{equation}
-
+\\
 
 In our simulation, we tried out two different two-dimensional stream equation :
 \begin{equation}
@@ -589,19 +589,35 @@ int main(int argc, char **argv)
 	\footnote{written by Alaa El Jawad and Sergio Pertierre}  
 ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there is so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented into project SHEPHERD, demonstrating the facilities of using this middleware.
 \subsection{Overview of the architecture}
-The diagram above shows the global view of how the elements of the project communicate 
+The diagram above shows the global view of how elements of the project communicate between them.
+
+{\Large JOLI DIAGRAM}
+
 \subsection{Detailled architecture of sailboats and buoys}
 
-Every buoy and sailboat basically works the same way. There are three main nodes that do most of the computation needed for the simulation of one of these components
+Every buoy and sailboat basically works the same way. There are three main nodes that do most of the computation needed for the simulation of one of these components (see diagram \ref{fig:ros_buoy} and \ref{fig:ros_sailboat})
     
     \begin{itemize}
     \item \textbf{Simulation node:} this node handles the simulation of the robot (sailboat or buoy - see chapter \ref{section:simulation}). It subscribes to the environment parameters and the command published by the regulator. Then it simulates the robot for a time step and publishes the real state of the robot and a noisy state that corresponds to the information given by the sensors.
     \item \textbf{Localisation node:} this node handles the localisation of the robot. It subscribes to the noisy state of the robot (i.e. the information given by the sensors), estimates and publishes the position of the robot.
     \item \textbf{Regulation node:} this node regulates the robot according to the objective it was given. It subscribes to the position of the robot, deduces the command to correct the trajectory and publishes it.
-    
-    
-
     \end{itemize}
+    
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{image/ros_buoy.png}
+	\caption{Buoy ROS Architecture}
+	\label{fig:ros_buoy}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{image/ros_sailboat.png}
+	\caption{Sailboat ROS Architecture}
+	\label{fig:ros_sailboat}
+\end{figure}
+
+
 \chapter{Display}
 
 \section{Matplotlib}
