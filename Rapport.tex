@@ -473,7 +473,9 @@ Given 2 points $\mathbf{a}$ and $\mathbf{b}$ to pass through, a sailboat can be 
 
 This algorithm stands for the control of a sailboat with 3 sensors. That is to say, the heading $\theta$, the wind angle $\psi$ and the position of its physic center $\mathbf{m}=(x,y)$ can be captured all the time during its advance process. For the part of actors, $u_1$ and $u_2$ are the two motors to control the movement of sailboat. Therefore, the controller will give out $u_1$ and $u_2$ as output.\\
 
-In this algorithm, we used a very simple idea: when the error between the aim and reality surpass a threshold, the aim will be adjusted by a coefficient. Then with the help of two functions atan() and sawtooth, it is not complicated to generate a feedback.
+In this algorithm, we used a very simple idea: when the error between the aim and reality surpass a threshold, the aim will be adjusted by a coefficient. Then with the help of two functions atan() and sawtooth, it is not complicated to generate a feedback.\\
+
+More concretely, we designed a 
 
 \begin{algorithm}
 
@@ -678,7 +680,7 @@ int main(int argc, char **argv)
   return 0;
 }
 \end{lstlisting}
-\section{ROS architecture}
+\section{ROS architecture of the project}
 	\footnote{written by Alaa El Jawad and Sergio Pertierre}  
 ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there are so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented for project SHEPHERD, demonstrating the advantages of using this middleware.
 
