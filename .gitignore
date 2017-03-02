@@ -13,3 +13,12 @@ out
 
 # Backup files
 *.bak
+
+# TexShop files
+*.aux
+*.lof
+*.log
+*.out
+*.gz
+*.toc
+*.pdf
