@@ -460,8 +460,10 @@ This equation does not yet consider the dsiplacement induced by the ballasts.The
 The command received by the simulation from the controller is understood by the simulation as the desired speed for the piston in the ballast.
 The vertical acceleration of the buoy is then computed using Newton's second law.\\
 \begin{equation}
-\frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w (\left V-\xi S \right )
+\frac{\mathrm{d^2} z}{\mathrm{d} t^2}= g-\rho_w \frac {\left ( V-\xi S \right )}{m}
 \end{equation}
+where m is the mass of the
+
 
 In our simulation, we tried out two different two-dimensional stream equation :
 \begin{equation}
