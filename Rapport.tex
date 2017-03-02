@@ -7,6 +7,9 @@
 %pour gérer les positionnement d'images
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -30,7 +33,8 @@
 \usepackage{subfig}
 %Pour les codes sources
 \usepackage{listings}
-
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}	%Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}}	%Use Output in the format of Algorithm
 %====================== INFORMATION ET REGLES ======================
 
 %rajouter les numérotation pour les \paragraphe et \subparagraphe
@@ -193,7 +197,7 @@ With the SIVIA algorithm, a list of boxes is generated which corresponds to the 
     \label{fig:SIVIA picture}
 \end{figure}
 
-\section{TDOA}
+\section{TDOA} \label{section:tdoa}
 \subsection{Introduction}
 \footnote{Section written by E. Bernardes and S. Pertierre} 
 In our settings we have four boats that should simultaneously send signals to the buoy, informing their positions (known due to each boat's GPS system) and time of emission (each boat has also an internal clock, considered to be synchronized). 
@@ -404,7 +408,96 @@ WIP Simon
 
 \section{Simulation of the sailboats}
 
-Jules est en train d'écrire cette partie!
+\footnote{The section "3.2 Simulation of the sailboats" was written by Lei Zhu.}
+
+\subsection{External forces and assumption}
+
+Chiefly, there are two kind of external forces can give out perceptible influence on our simulative sailboats: the wind and the wave. Since air and water are in touch with the sailboats directly, there is no force from the land. Among all the forces given by air and the water, the friction and damping are insignificant. Therefore we talk about our method for simulating the the wind and the wave.\\
+
+The situation of wind in the real world is really complicated. Even the most experienced meteorologist cannot predict the variation of wind for a 100\% accuracy. In our case, it is next to impossible to simulate the wind in an open sea area. Even if we generate randomly the force, this makes no sense except give out a confusing motion of the sailboat under irregular wind. Conversely, if we suppose the wind as constant, we don't really lost the similarity to real word. Meanwhile, we get a lot of time saved as well as the illustration simplified.\\
+
+For the part of waves, we studied the existing work by Mr.Ponte about the analytical solutions of plausible oceanic flows.The mathematic model of multiple 3D eddies is given as \ref{eq:eddies}. \\
+\begin{equation}
+\begin{aligned}
+\psi&= \sum \psi_i e^{-||\mathbf{x-x_i}||^2/R_i^2} \times \cos \frac{N}{c_n}(z+h)  \\
+c_n &=\frac{NH}{n\pi} \space ( n>0 \space  , \space \frac{N}{c_0}=0 )  \\
+u &=-\partial_y \psi = \sum \psi_i \frac{2y(y-y_i)}{R_i^2} e^{-||\mathbf{x-x_i}||^2/R_i^2}   \\
+v &=\partial_x \psi = \sum \psi_i \frac{-2x(x-x_i)}{R_i^2} e^{-||\mathbf{x-x_i}||^2/R_i^2} 
+\label{eq:eddies}
+\end{aligned}
+\end{equation}\\
+
+This model and simulation of eddies enlightened us. . However, we find that the sailboat will always work on the sea level and we do not need a 3d simulation of the water. Therefore we chose to ignore the wave and Waves are not simulated eventually.\\
+
+In brief, we analyzed the complexity and compared the result of different choices, and finally we assume that the wind is constant and the wave is static.
+
+
+\subsection{State representation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/state_representation.jpg}
+	\caption{Force illustration and state representation of sailboat}
+	\label{fig:state_repre}
+\end{figure}
+
+
+
+As shown in Figure \ref{fig:state_repre}, we denote a triple $(x, y, \theta)$ to represent the state of the boat. Here x and y is its geometry coordinate while $\theta$ is its heading. Except for the 3 state variables, all the others are used for calculation. Their physic meaning and units are shown in Table \ref{tab:used_var}.
+
+\begin{table}[ht]
+\centering
+\caption{\label{tab:used_var}Used variables in sailboat state representation.}
+\begin{tabular}{c|l|c}
+\hline\hline
+Variable & Physic Representation & Unit \\
+\hline\hline
+%\midrule
+$v$ & advancing speed & m/s\\
+$\omega$ & angular speed & rad/s \\
+$\psi$ & wind angle &  rad \\
+$f_s$ & force of the wind & N \\
+$f_r$ & force of the water on the rudder & N \\
+$\delta_s$ & sail angle & rad \\
+$\delta_r$ & rudder angle (input) &  rad \\
+$\delta_s^{max}$ & maximum angle of the sail(input) & rad\\
+
+\hline\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Control algorithm}
+
+Given 2 points $\mathbf{a}$ and $\mathbf{b}$ to pass through, a sailboat can be controlled by a model-free method \cite{robmob}. As we have mentioned in previous subsection, the sailboat has two inputs which are the rudder angle $u_1 = \delta_r$ and the maximum angle of the sail $u_2 =\delta_s^{max}$. We realized a controller by Algorithm \ref{alg_sailboat_controller}, witch was proposed my Mr.Jaulin on his paper \cite{jaulin2013interval}.\\
+
+This algorithm stands for the control of a sailboat with 3 sensors. That is to say, the heading $\theta$, the wind angle $\psi$ and the position of its physic center $\mathbf{m}=(x,y)$ can be captured all the time during its advance process. For the part of actors, $u_1$ and $u_2$ are the two motors to control the movement of sailboat. Therefore, the controller will give out $u_1$ and $u_2$ as output.\\
+
+In this algorithm, we used a very simple idea: when the error between the aim and reality surpass a threshold, the aim will be adjusted by a coefficient. Then with the help of two functions atan() and sawtooth, it is not complicated to generate a feedback.
+
+\begin{algorithm}
+
+\centering
+\caption{Sailboat controller algorithm}
+\label{alg_sailboat_controller}
+\begin{algorithmic}[1] %此处的[1]控制一下算法中的每句前面都有标号 
+\REQUIRE $\mathbf{m}$,$\theta$, $\psi$, $\mathbf{a}$, $\mathbf{b}$, $q$
+\ENSURE $\delta_r$,$\delta_s^{max}$, $q$
+\STATE $e=det(\frac{\mathbf{b}-\mathbf{a}}{||\mathbf{b}-\mathbf{a}||},\mathbf{m}-\mathbf{a})$
+\IF{$|e|>r$}
+	\STATE $q=sign(e)$ \\
+\ENDIF
+\STATE $\phi=angle(\mathbf{b}-\mathbf{a})$\\
+\STATE $\bar{\theta}=\phi-atan(\frac{e}{r})$\\
+\IF{$cos(\phi-\bar{\theta})+cos\zeta<0 $ or $(|e|<r $ and $(cos(\psi-\phi)+cos\zeta<0))$}
+	\STATE $\bar{\theta}=\pi+\psi-q\zeta$ \\
+\ENDIF
+\STATE $\delta_r=\frac{\delta_s^{max}}{\pi}sawtooth(\theta-\bar{\theta})$\\
+\STATE $\delta_s^{max}=\frac{\pi}{2}(\frac{cos(\psi-\bar{\theta})+1}{2})^\frac{log(\frac{\pi}{2\beta})}{log(2)}$\\
+
+\end{algorithmic} 
+\end{algorithm}
+
 
 \section{Simulation of the buoys}
 \subsection{The Controller of the buoys}
@@ -587,11 +680,22 @@ int main(int argc, char **argv)
 \end{lstlisting}
 \section{ROS architecture}
 	\footnote{written by Alaa El Jawad and Sergio Pertierre}  
-ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there is so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented into project SHEPHERD, demonstrating the facilities of using this middleware.
-\subsection{Overview of the architecture}
-The diagram above shows the global view of how elements of the project communicate between them.
+ROS provides lots of infrastructure, tools and capabilities as it was explained in the previous section. It means that there are so many differents ways to do the same task. So, in this section we will explain using diagrams how ROS was implemented for project SHEPHERD, demonstrating the advantages of using this middleware.
 
-{\Large JOLI DIAGRAM}
+Basically, there are the diagram which shows the general view of the project and then two diagrams presenting the detailed architecture of sailboats and buoys.
+\subsection{Overview of the architecture}
+The diagram below shows the global view of how elements of the project communicate between them.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{image/ros_overview.png}
+	\caption{Overview of ROS Architecture}
+	\label{fig:ros_overview}
+\end{figure}
+
+The node \textit{sim\_world} sends the message \textit{/worldwind} communicating the direction and force of the wind to the sailboats, which use this information for the simulation. Then they send their positions \textit{pose\_real} to the node \textit{pinger}. These positions and the position of the buoys are also sent to other nodes for displaying the ensemble. Different method for displaying were implemented, and a node for each one of this method was implemented as well, but this is better explained in chapter \ref{section:display}.
+
+The node \textit{pinger} is an abstraction of the ping sent by the sailboats to inform their position to the buoys. Indeed, in the physical world a ping takes a certain time to travel to the buoy. In the simulation however, we estimate this travel time by knowing the real position of the sailboats and buoy and give this information to the buoy. This information is used to estimate the pose of the buoy using TDOA (as explained in section \ref{section:tdoa} )
 
 \subsection{Detailled architecture of sailboats and buoys}
 
@@ -602,13 +706,20 @@ Every buoy and sailboat basically works the same way. There are three main nodes
     \item \textbf{Localisation node:} this node handles the localisation of the robot. It subscribes to the noisy state of the robot (i.e. the information given by the sensors), estimates and publishes the position of the robot.
     \item \textbf{Regulation node:} this node regulates the robot according to the objective it was given. It subscribes to the position of the robot, deduces the command to correct the trajectory and publishes it.
     \end{itemize}
-    
+  
+Also, in both cases the real poses are published so that the pinger and the display nodes know exactly where are the elements. However there are small differences between the sailboat and the buoy.
+
+In the case of the buoy (see figure \ref{fig:ros_buoy}), the localisation subscribes to the ping and the depth sensors. The ping is sent by the pinger (see previous section). The depth sensors is simulated by the buoy simulator.
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{image/ros_buoy.png}
 	\caption{Buoy ROS Architecture}
 	\label{fig:ros_buoy}
 \end{figure}
+
+In the case of the sailboat (see figure \ref{fig:ros_sailboat}) the simulation node needs to subscribe to the environment to know informations about the wind (force and direction) to simulate the sailboat. The regulation node also need informations about the wind direction and the center of the triangle the sailboat needs to follow.
 
 \begin{figure}[H]
 	\centering
@@ -618,7 +729,7 @@ Every buoy and sailboat basically works the same way. There are three main nodes
 \end{figure}
 
 
-\chapter{Display}
+\chapter{Display} \label{section:display}
 
 \section{Matplotlib}
 
@@ -706,8 +817,8 @@ def update_center(msg, name):
 
 \end{lstlisting}
 
-\subsubsection{plot API}
-
+\subsubsection{The Sea Plot API}
+A separate module called seaplotapi was used to provide the drawing functions. Each functions within gives a Numpy array (vector or matrix), which is called in the main file for each drawn objects. 
 \subsection{Result}
 
 Once the launch files executed, we have the following display. The sailboats leave a green trail behind them and the opacity of the buoys represent the depth and the black arrow gives the wind direction. 
