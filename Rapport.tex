@@ -76,9 +76,9 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
     
     \author{
             \textbf{Students}\\
-            \textsc{El Jawad.A,  Chanu.S, Sola.G, Welte.A, Soulie.C, Benet.P, Mehdi.N, } \\
+            \textsc{El Jawad.A,  Chanu.S, Sola.Y, Welte.A, Soulie.C, Benet.P, Mehdi.N, } \\
             \textsc{Galland.A, Barronier.R, El Abdalaoui.Z, Finand.C, Zhu.L, Pertierre.S, } \\
-            \textsc{Ennouhi.F, Bernardes.E, Tanguy.F} \\
+            \textsc{Ennouhi.F, Bernardes.E, Tanguy.F, Martin.P} \\
             \\
             \textbf{Supervisor}\\
             \textsc{Luc Jaulin, ENSTA Bretagne} 
@@ -125,21 +125,90 @@ pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 
 \chapter{Presentation of the Shepherd project}
 \section{Given issue}
+\footnote{Section Written by Camille Finand}
+The issue the project is trying to solve in an issue raised by IFREMER. They wish to realize a three dimensional map of the turbulent flow of currents in ocean. To this end, they wish to deploy a swarm of buoy robots, left to drift with the current, at a know variable depth.
+
+Our mission was to design such a swarm of buoy robots, their shepherd sailing boats\footnote{see "Our solution" section for more details} and to realize a simulation of experiment through interval calculus.
+
+
 \section{Our solution}
-\section{TDOA method}
+
+\footnote{Section Written by Camille Finand}
+In order to solve the given issue we decided to introduce "shepherd sailboats".
+Because our buoys  are unable to locate themselves via GPS while under water, the sailboats act as interfaces between the GPS network and the underwater buoys.
+
+There will be four shepherd boats providing a frame for the buoys to locate themselves in.
+This localization will be realized through calculating the \emph{Time Difference Of Arrival} \footnote{see section 1.3 TDOA method} of four acoustics pings.
+Each boat send a unique synchronized ping received by all the buoys that can then estimate their position relatively to the boats.
+
+This allows us to have a relative control over our swarm of buoys dispersion.
+Having a map, or at least a local map, we can indeed chose the current that best match our expectations for the chosen dispersion or displacement of the swarm.
+Such a dispersion and or position will be a fixed chosen interval of positions in the four sailboats frame.
+
+However the positioning is relative to the sailboats and not necessarily known by the buoys. So they need to come back to the surface during the mission in order to precisely update their position and centralize their data.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.9]{image/ProjectSchem.png}
+  \label{ProjectSchem}
+  \caption{Buoy localization and control}
+\end{figure}
+
+The Buoys are controlled in depth via Ballasts and pressure captors. The sailboats are not controlled in position but rather follow lines that forms triangle. It is indeed much simpler than having them strictly sticking to a point, and we don't really need them to be on a specific place at a given time, they just need to be close enough and far enough to each other to give the buoys an adapted frame in which to position themselves.
+
+% 
+\section{Interval Analysis}
+\subsection{Introduction}
+\footnote{Section written by M. Fadil Ennouhi and F. Tanguy} 
+Interval analysis aims to use sets of intervals, rather than
+sets of real numbers in arithmetic. 
+Thus performing the same simple operations such as sum and multiplication on intervals. The usefulness of this particular method lies in its tolerance to uncertainty. In the SHEPHERD Project our sensors and methods inherently cause uncertainty, making the use of Interval Analysis in the localization procedure almost compulsory.
+
+\subsection{Application}
+In our simulation we restricted the problem to a buoy trying to find its location using the data fed by four sailboats. We then use the SIVIA algorithm to estimate the position of the buoy. 
+The Set Inversion Via Interval Analysis globally consists of performing set inversion. 
+
+\begin{equation}
+	\text{if f: } \mathbf{R^n} \rightarrow \mathbf{R}^m \text{ and } \mathbf{Y} \subset \mathbf{R^m}
+\end{equation}
+
+\begin{equation}
+	\mathbf{X}=\{x \in \mathbf{R^n}\ | f(x) \in \mathbf{Y} \}=f^-1\mathbf{(Y)} \nonumber\\
+	\label{eq: Set Inversion}
+\end{equation}
+
+We strongly recommend viewing the videos of M. Luc Jaulin on this subject which can be found on YouTube.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{image/sivia.png}
+	\caption{The SIVIA algorithm.}
+	\label{fig:SIVIA}
+\end{figure}
+
+With the SIVIA algorithm, a list of boxes is generated which corresponds to the localization of the robot. There are three different areas, one representing the position of the robot (the inner area). The outer area does not contain the robot, and the last area correspond to the border, the size of this area depends on the minimum size of the boxes.
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=0.4\linewidth]{image/loca_IA.png}
+    \begin{center}\caption{ Illustration of the SIVIA algorithm (blue:outer area, red:inner area(buoy), yellow:estimated position of the buoy green: sailboats)}\end{center}
+    \label{fig:SIVIA picture}
+\end{figure}
+
+\section{TDOA}
 \subsection{Introduction}
 \footnote{Section written by E. Bernardes and S. Pertierre} 
 In our settings we have four boats that should simultaneously send signals to the buoy, informing their positions (known due to each boat's GPS system) and time of emission (each boat has also an internal clock, considered to be synchronized). 
 %
 The buoys have to be programmed in a way that make it possible for them to receive these data and calculate their position. 
 
-One possible way to solve this problem is to put a clock inside each buoy.% make it send a back signal to the boats. 
+One possible way to solve this problem is to put a clock inside each buoy.
 %
 In this way, using the fact that we know the signal's velocity in the sea, we can easily calculate the distances of the buoy to each one of the boats by doing the following calculation:
+
 \begin{equation}
-d_n = ||p - q_n|| = c(t_n - t_0)
-\label{eq:distance}
+	d_n = ||p - q_n|| = c(t_n - t_0)
+	\label{eq:distance}
 \end{equation}
+
 Where $d_n$ is the distance of the buoy to the $n$th boat, $q_n = (q_{nx},q_{ny},q_{nz})$ is the position of said boat, $p = (p_x,p_y,p_z)$ is the buoy's position in the sea, $c$ is the signal's velocity in the medium, $t_0$ is the time of emission and $t_n$ is the time when the buoy receive the $n$th boat's signal. 
 %
 We can calculate all distances in this way and then triangulate the buoy's position.
@@ -147,11 +216,9 @@ We can calculate all distances in this way and then triangulate the buoy's posit
 It is indeed a simple and efficient method of calculation. Nevertheless, it can be difficult to guarantee that the buoy's internal clock is well synchronized with those of the boats, raising the possibility of high uncertainties in the calculations.
 %
 It is not impossible to do so, but the needed precision clock can be expensive. The Time Difference of Arrival (TDOA) method is proposed to replace this method of calculation and overcome this difficulty.
-%
-% TODO: INSERT BOATS AND BUOY FIGURE
-% \label{fig:boats_buoy_signals}
+
 \subsection{Method principle}
-The method consists in substituting the buoy's clock by??? a chronometer.
+The method consists in substituting the buoy's clock with a chronometer.
 %
 The chronometer is not capable of knowing the exact moments of the signals arrivals, but it is able to keep track of the time difference between each signal.
 
@@ -159,8 +226,13 @@ When the buoy receives the first boat's signal, if launches the chronometer and 
 %
 They buoy stores then the values $\tau_2 = t_2 - t_1$, $\tau_3 = t_3 - t_1$ and $\tau_4 = t_4 - t_1$; as shown in the Figure \ref{fig:time_differences}.
 %
-% TODO: INSERT TIME DIFFERENCES FIGURE
-% \label{fig:time_differences}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/time.png}
+	\caption{Time difference values are stored by the buoy.}
+	\label{fig:time_differences}
+\end{figure}
+%
 The equation \ref{eq:distance} is still valid, and applying it to our project, we have the system of linear equations described in \ref{eq:distance_system}.
 \begin{align}
 d_1 = ||p - q_1|| &= c(t_1 - t_0) \nonumber \\
@@ -169,7 +241,7 @@ d_3 = ||p - q_3|| &= c(t_3 - t_0) \nonumber \\
 d_4 = ||p - q_4|| &= c(t_4 - t_0) \nonumber 
 \label{eq:distance_system}
 \end{align}
-
+%
 Substituting the time differences $\tau_n$ in \ref{eq:distance_system}, we have the following final system:
 \begin{align}
 ||p - q_1|| &= c(t_1 - t_0) \nonumber \\
@@ -182,65 +254,582 @@ Since $q_n$, $c$, $t_0$ and $\tau_n$ are all known, then the only unknowns in th
 %
 Since the buoy's are also equipped with ballasts, we also known the value $p_z$ in our case, our number of equations is bigger than our number of unknown variables.
 
-
 \chapter{Team management methods}
 \section{Scrum}
+
+\footnote{The section "2.1 Scrum" and its subsections "2.1.1 Agile Software Development" and "2.1.2 Scrum Methodology" were written by Yoann SOLA.}
+
+\subsection{Agile Software Development}
+
+
+The traditional methods of project management, such as the "V-Model" for example, are not appropriate with software engineering. Indeed, they are too inflexible, they induce a lack of reactivity and they ask for too many deliverables. These methods are predictive methods because they need to plan every single detail of the project, before even starting to code anything.\\
+
+A proof of this inefficiency is the "Chaos Report", published in 1995 by the Standish Group, which studied about 8380 software projects, taken from 365 companies. It showed that 16,2\% of the projects were compliant with the initial forecasts, 52,7\% of them were over the initial budget and went over the initial deadline, and 31,1\% of them were cancelled during their development.\\
+
+Based on this observation, 17 experts in software engineering decided to create in 2001 the Agile Alliance and "The Manifesto for Agile Software Development", which describes the values of the Agile methodology in software engineering. There are four fundamental values in the Agile methodology :
+\begin{itemize}
+  \item people and communication BEFORE processes and tools
+  \item operational features BEFORE the documentation
+  \item interacting with the client INSTEAD OF contractual relations
+  \item accepting the change INSTEAD OF always following initial plans\\
+\end{itemize}
+
+Here are some of the most known methods : ASD (Adaptative Software Development), Crystal, DSDM (Dynamic Software Development Method), Lean, Scrum, XP (eXtreme Programming). We used the Scrum methodology in the SHEPHERD Project.\\
+
+\subsection{Scrum Methodology}
+
+The principle of the Scrum methodology is to organize the project in phases called "sprints" (see Figure \ref{fig:scrum_overview}).\\ 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/SCRUM-overview-resize.png}
+	\caption{An overview of the Scrum methodology.}
+	\label{fig:scrum_overview}
+\end{figure}
+
+\vspace{1cm}
+Indeed, each time a feature of the software is defined by the team (at the beginning or during the project), it is added to a database called the "Product Backlog". \\
+
+A sprint is often a phase of several weeks, which has to produce a fully operational prototype at its end, even if the prototype includes a feature which is not going to be kept for the final version of the software. For that purpose, the features that are going to be implemented during the current sprint are taken from the Product Backlog and are stored in an other database called the "Sprint Backlog".\\
+
+In order to be sure that no one is encountering some troubles, daily morning meeting of 15 minutes are organized by the team, called "Scrums".\\
+
+Moreover, the Scrum methodology uses some useful tools such as the "Kanban Board" (see Figure \ref{fig:kanban}) and the "Burn-down Chart" (see Figure \ref{fig:burndown_chart}), which allows to check if the work will be finished on time if we kept the current pace of work.\\
+
+\vspace{1cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/kanban-1.jpg}
+	\caption{An example of a kanban Board.}
+	\label{fig:kanban}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/burndown-chart-formula.jpg}
+	\caption{An example of a burn-down chart.}
+	\label{fig:burndown_chart}
+\end{figure}
+
+Finally, three roles are defined by the Scrum methodology for each member of the team :
+
+\begin{itemize}
+	\item the Product Owner : it is the person who has to be constantly in relation with the client and has to fill the Product Backlog with him.
+	\item the Scrum Master : this is the project manager who has to apply correctly the Scrum methodology and has to be sure that each member of the team has good working conditions.
+	\item member of the Scrum Team : this is the team of developer which has to implement features from the Product Backlog.\\
+\end{itemize}
+
+In order to implement the Scrum methodology in the SHEPERD project, we use an online platform that allows to easily manage all aspects of this Agile software development method : taiga.io (see Figure \ref{fig:taiga_logo}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/taiga_io.png}
+	\caption{Logo of the platform taiga.io.}
+	\label{fig:taiga_logo}
+\end{figure}
+
 \section{Github}
+\footnote{Section written by Simon Chanu}
+
+Github is a website created as free public code repository that facilitate the use of the version control system named Git.
+
+\subsection{Introduction to Git and Version control systems}
+\subsubsection{Version control system}
+A version control system is a powerful tool used by software development teams to increase the efficiency of coding in team. It is heavily used, if not essential to nowadays software development. It can be a standalone application (such as Git) or it can be embedded in other applications or webapplications (such as Wikipedia). There is a large number of different software that provides a version control system (VCS), but the most commonly used nowadays is Git.\\
+\\
+The VCS several advantages : 
+\begin{itemize}
+	\item \textbf{Simultaneous coding} : two members of a team can edit the same file then merge theirs modifications. Thus it allows for efficient teamwork. There is no need anymore to warn the other people of the team that you are working on this specific file and the others must not modify it. This is by far the most interesting feature by making merging code very easy.
+    \item \textbf{Versioning} : there is no need to create lots of backup anymore. You can revert the code to previous modifications.
+    \item \textbf{Branching} : the code can be separated in different versions. This tool can be used to store versions of the code for different OS for example. But a more common use today is to split versions to implement a new but still buggy feature in the code while the ancient version stays the same. This system will be explained with git in details later.
+    \item \textbf{Cloud developpement} : The code can be stored locally or on a remote server. Therefore this is decentralized : it allows to get the sourcecode from anywhere you want and work on it very easily. Moreover if the developer makes a huge mistake and delete everything, he can just download it back to his computer from the remote server. 
+\end{itemize}
+
+\subsubsection{Git}
+
+Git is a version control software created by Linus Thorvald (Creator of Linux) in 2005. It was created at the begining as a development tool for the linux kernel. The tool much quicker, secure and supporting distributed development that any version control development at that time, 
+This software is available on Linux, Windows, Mac, Solaris. \footnote{https://git-scm.com/downloads} \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.2\linewidth]{image/git.png}
+	\caption{Logo of Git}
+	\label{fig:git_logo}
+\end{figure}
+
+Git is now the most widely used source code management tool with 42.9\% of professional software developers using it.
+
+\footnote{https://eclipse.org/org/community\_survey/Survey\_Final\_Results\_2012.xls}
+
+\subsubsection{How does it work ?}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{image/GitBranch.jpg}
+	\caption{Branching system}
+	\label{fig:gitbranch_logo}
+\end{figure}
+
+You can find more about how to work collaboratively with git \href{https://www.atlassian.com/git/tutorials/comparing-workflows}{here}.
+
+\subsection{Github}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/github.jpg}
+	\caption{Logo of Github}
+	\label{fig:github_logo}
+\end{figure}
+
+\subsection{Architecture of the project}
+\subsubsection{First decentralized architecture}
+
+WIP Simon
+
+\subsubsection{Migration on ROS}
+
+WIP Simon
+
+\subsubsection{Statistics}
+
+WIP Simon
 
 \chapter{Simulation theory}
 \section{Simulation of the environment}
+
+WIP Simon
+
 \section{Simulation of the sailboats}
+
+Jules est en train d'écrire cette partie!
+
 \section{Simulation of the buoys}
+\subsection{The Controller of the buoys}
+
+\footnote{The subsection "3.3.1 Controller of the buoys" was written by Yoann SOLA.}
+
+By default, buoys constantly go up and down inside a water column of the ocean, in order to measure the direction of ocean currents at different depths. They can go down until a depth of 1 km and their speed cannot be over 1 m/s. They are able to move vertically thanks to ballasts.\\
+
+They are able to know the direction of ocean currents at a given level of depth by measuring their own acceleration. Indeed, the acceleration of the buoy has the same direction than the direction of ocean currents. This is due to the fact that buoys are moved by ocean currents.\\
+
+In order to prevent buoys from drifting too far, they need to move towards the barycenter formed by the 4 sailboats. This principle allows to keep the group cohesion between buoys.\\
+
+As buoys know the ocean currents of a given water column, they can reach the depth (thanks to their ballasts) which is going to correspond to the best ocean current allowing to move towards the barycenter of the sailboats.\\
+
+Finally, they must surface every 5 hours in order to synchronize their internal clock with GPS signals.
+
+
+
+
+
+\subsection{The state equations of the buoys}
+
+\footnote{The subsection "3.3.1 Controller of the buoys" was written by Alexandre GALLAND.}
+
+We consider that our system, the sea, can be represented by an incompressible fluid. Thus, we can define a stream function noted $\psi$, which will determine the map of displacement of a particle in the fluid.
+Futhermore, we consider that the buoy will behave as a passive particle, letting itself drift with the current.
+In the case of two-dimensional, divergence-free Eulerian velocity fields, the equations of motion for a passive particles are : \begin{equation}
+\left\{\begin{matrix}
+\frac{\mathrm{d} x}{\mathrm{d} t}= u(x,y,t)=\frac{\partial \psi }{\partial y}\\ 
+\frac{\mathrm{d} y}{\mathrm{d} t}= v(x,y,t)=-\frac{\partial \psi }{\partial x}
+\end{matrix}\right.
+\end{equation}
+
+where \textbf{u(x)} = [u(x,y,t),v(x,y,t)].
+We will consider the following system as the equations describing the dynamics of advected impurities
+\begin{equation}
+\left\{\begin{matrix}
+\frac{\mathrm{d^2} x}{\mathrm{d} t^2}= \delta \frac{\mathrm{D} u}{\mathrm{D} t} -\mu (\frac{\mathrm{d} x }{\mathrm{d} t}-u)\\ 
+\frac{\mathrm{d^2} y}{\mathrm{d} t^2}= \delta \frac{\mathrm{D} v}{\mathrm{D} t} -\mu (\frac{\mathrm{d} y}{\mathrm{d} t}-v)
+\end{matrix}\right.
+\end{equation}
+
+where 
+$
+\frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t} = \frac{\partial \mathbf{u} }{\partial t}+\mathbf{(u. \nabla )u}
+$,
+$\delta = \frac{\rho_f}{\rho_b}$
+is the ratio of the fluid density $\rho_f$ to the density of the buoy $\rho_b$, and
+$\mu \simeq 1$ is the dynamic viscosity ofthe water.
+$\delta \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}$ represents the force per unit volume that would be exerted by the fluid on a fluid particle placed at the position of the impurity (similarly to the Archimede's principle).The second terms represents the Stockes drag felt by the buoy whose velocity is different from the flow velocity.\\
+In our simulation, we tried out two different two-dimensional stream equation :
+\begin{equation}
+\psi = A*cos(a_x x+a_y y)
+\end{equation}
+where $A=2$, and $a_x = a_y = 1$
+\begin{equation}
+\psi = \sum \frac{\left \| X-X_i \right \|^2 }{R_i ^2}e^{ -\frac{\left \| X-X_i \right \|^2 }{R_i ^2}}
+\end{equation}
+The first equation creates for small values of A,$a_x$ ,$a_y$ what looks like a chaotic behavior for the buoys.The associated current is a series of vortex close to each other.\\
+The second equation is the equation of a stream composed of a multiple water whirl 
+
+
+
 
 \chapter{Simulation architecture}
 \section{ROS presentation}
+\footnote{This Section was written by Romain Baronnier}
+
+ROS (Robot Operating System) is the most commonly used middleware in robotic application. The suite was first released in 2007 by Willow Garage, a robotics research lab in California.\\
+\begin{center}
+\includegraphics[scale=0.4]{image/ros.png}
+\end{center}
+
+The Middleware are computer software that allow us to develop new program in a modular fashion. It work as an interface between the different block of our programs. It allow programmer to begin writing their code with a basis.The block Architecture facilitate the flow between simulation and reality : changing the simulation block by real data from real sensor doesn't necessitate to change the whole code. Middleware are frequently used in Simulation, Network system and Robotics.\\
+
+ROS works with a Node architecture, our different blocks become Node in a web of shared Data. Every shared information are Topic that can be broadcasted by Ros's publisher and any node can subscribe to receive update on those informations.Those subscriber can launch Callback function when they receive new data, giving us the possibility to apply traitement to those data. Ros Node can be written in a lot of programming language but the two most commonly used are Python and C++. Moreover as the programs are not directly interfaced but use ROS, we can write some nodes in python and some in C++ and make them communicate without any compatibility problem. We exploited this feature as some of our developper prefer Python while some choose C++.\\
+
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[language=C++, caption={Simple Publisher}, frame=single]
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+#include <sstream>
+int main(int argc, char **argv)
+{
+  ros::init(argc, argv, "talker");
+  /**
+   * NodeHandle is the main access point to communications with the ROS system.
+   * The first NodeHandle constructed will fully initialize this node, and the last
+   * NodeHandle destructed will close down the node.
+   */
+  ros::NodeHandle n;
+  /**
+   * The advertise() function is how you tell ROS that you want to
+   * publish on a given topic name.
+   */
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  ros::Rate loop_rate(10);
+  int count = 0;
+  while (ros::ok())
+  {
+    /**
+     * This is a message object. You stuff it with data, and then publish it.
+     */
+    std_msgs::String msg;
+    std::stringstream ss;
+    ss << "hello world " << count;
+    msg.data = ss.str();
+    ROS_INFO("%s", msg.data.c_str());
+    /**
+     * The publish() function is how you send messages. The parameter
+     * is the message object. The type of this object must agree with the type
+     * given as a template parameter to the advertise<>() call, as was done
+     * in the constructor above.
+     */
+    chatter_pub.publish(msg);
+    ros::spinOnce();
+    loop_rate.sleep();
+    ++count;
+  }
+  return 0;
+}
+\end{lstlisting}
+
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[language=C++, caption={Simple Subscriber}, frame=single]
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+
+void chatterCallback(const std_msgs::String::ConstPtr& msg)
+{
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
+
+int main(int argc, char **argv)
+{
+  /*You must call one of the versions of ros::init() before using any other
+   * part of the ROS system.
+   */
+  ros::init(argc, argv, "listener");
+
+  /* NodeHandle is the main access point to communications with the ROS system.
+   * The first NodeHandle constructed will fully initialize this node, and the last
+   * NodeHandle destructed will close down the node.
+   */
+  ros::NodeHandle n;
+  /* The subscribe() call is how you tell ROS that you want to receive messages
+   * on a given topic.
+   */
+  ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+
+  /* ros::spin() will enter a loop, pumping callbacks.  With this version, all
+   * callbacks will be called from within this thread (the main one).  ros::spin()
+   * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
+   */
+  ros::spin();
+
+  return 0;
+}
+\end{lstlisting}
 \section{ROS architecture}
     
 \chapter{Display}
-\section{OpenGL}
-\subsection{presentation}
+
+\section{Matplotlib}
+
+\subsection{Presentation}
+\footnote{Section written by N.Mehdi } 
+Matplotlib, created by John Hunter (1968-2012), is a Python 2D plotting library composed of several toolkits like 3D plotting, real-time plotting, mapping toolkits and more. With NumPy, Python provides an object oriented API for data programming and scientific visualizations sharing some features with MATLAB.
+
+\subsection{How does it work ?}
+
+Displaying a simple looking animation with matplotlib was the easier way to obtain an animated representation of the simulation running under ROS. To do so, we had to just create a ROS package dedicated to plotting a 2D simulation. It was one of the strengths to use Python and the associated libraries. Everything is running under the ROS ecosystem and we do not need to export the data from the simulation toward an external program. We access the data through regular subscribers.
+For more details on how the different ROS packages including the Python display, we could refer to the Chapter 4 Section 4.2. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.6]{image/index.jpg}
+  \label{Flow}
+  \caption{Messages flow between the simulation and the display }
+\end{figure}
+
+\subsubsection{Code Structure}
+
+The whole code used for the Matplotlib display is inside the dedicated ROS package. Each element, from the sailboats to the buoys, is represented by an instance of the \textit{PoseHolder} class which is the mother-class of \textit{SailboatPoseHolder} and \textit{BuoyPoseHolder}. This family of classes contains the objects which will be influenced by the environment like the wind direction and regulated by the controller. For the sailboat, the parameters are x, y and $\theta$ while the buoy location is represented by x, y and z. Each object has a parameter history for each component, allowing the regulator to access to the previous locations  of the objects. 
+
+
+\lstset{
+    string=[s]{"}{"},
+    stringstyle=\color{green},
+    comment=[l]{:},
+    commentstyle=\color{blue},
+    keywordstyle=\bfseries\color{green!40!black}
+}
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[caption=PoseHolder Class, frame=single,language=Python]
+class PoseHolder(object):
+    """docstring for SailboatPoseHolder"""
+    MAX_HIST_SIZE = 500
+
+    def __init__(self, pose):
+        self.pose = pose
+        self.histX = []
+        self.histY = []
+        self.histT = []
+
+    def update_hist(self, x, y, theta):
+        self.histX.append(x)
+        self.histY.append(y)
+        self.histT.append(theta)
+        if len(self.histX) > PoseHolder.MAX_HIST_SIZE:
+            del(self.histX[0])
+        if len(self.histY) > PoseHolder.MAX_HIST_SIZE:
+            del(self.histY[0])
+        if len(self.histT) > PoseHolder.MAX_HIST_SIZE:
+            del(self.histT[0])
+\end{lstlisting}
+
+Different functions allows to update the  parameters calculated by the simulation package and read by the publisher. These update functions are called in a \textit{while} loop, animating the different objects on the display. The principal update methods are given in the following.  
+
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[caption=Update Functions, frame=single,language=Python]
+def update_disp(msg, name):
+    global sailboats, buoys
+    # print 'Updating', sailboat_name
+    # print('[INFO] updating : {}'.format(name))
+    if name in sailboats:
+        # print('[INFO] Adding new sailboat pose : {}'.format(name))
+        sailboats[name].add_new_pose(msg.pose)
+    else:
+        buoys[name].add_new_pose(msg)
+
+
+def update_wind(msg):
+    global wind_dir, wind_strength
+    wind_dir, wind_strength = msg.wind_angle, msg.wind_strength
+
+
+def update_center(msg, name):
+    global sailboats, buoys
+    # print 'Updating center', sailboat_name
+    if name in sailboats:
+        sailboats[name].cx = msg.data[0]
+        sailboats[name].cy = msg.data[1]
+    else:
+        pass
+
+
+\end{lstlisting}
+
+\subsubsection{plot API}
+
+\subsection{Result}
+
+Once the launch files executed, we have the following display. The sailboats leave a green trail behind them and the opacity of the buoys represent the depth and the black arrow gives the wind direction. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.4]{image/display3.png}
+  \label{Flow}
+  \caption{Display with matplotlib plotting }
+\end{figure}
+
+
+
+
+\section[OpenGl]{OpenGL\footnote{Section 5.2 written by Pierre BENET}}
+
+\begin{figure}[htbp]
+  \begin{minipage}[b]{0.4\textwidth}
+  \centering
+    \includegraphics[scale =0.3]{image/opengl.jpeg}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.4\textwidth}
+  \centering
+    \includegraphics[scale = 0.3]{image/SDL.jpeg}
+  \end{minipage}
+\end{figure}
+
+\subsection{Presentation}
 
 Open Graphics Library (OpenGL) is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics. The API is typically used to interact with a graphics processing unit (GPU), to achieve hardware-accelerated rendering.
 
-We chose to use OpenGl 1.1 as a soft and reliable 3d rendering system. OpenGl is a low level rendering library. Unlike high level graphic engine such as Unity, it is easy to print vector fields and soft graphic that are easy to see. With realistic graphics, it can be difficult to see the data between the reflects of the light and the real opacity of watter for example. With Opengl, transparency of watter can be adjusted for a better visualisation.
+We chose to use OpenGl 1.1 as a soft and reliable 3d rendering system. OpenGl is a low level rendering library. Unlike high level graphic engine such as Unity, it is easy to print vector fields and soft graphic that are easy to see. With realistic graphics, it can be difficult to see the data between the reflects of the light and the real opacity of watter for example. With Opengl, transparency of watter can be adjusted for a better visualization.
 
-OpenGl does not work alone. It has to be integrated in the window manager of the operating system. An open source library SDL (Simple Direct media Layer) enables to use the graphic interface of most of the operating systems. Moreover, it provides keyboards and mouse support so that the user can navigate in the 3d environnement and interact with the window. SDL provides also a lot of features such as sound handling and other device support.
+OpenGl does not work alone. It has to be integrated in the window manager of the operating system. An open source library SDL (Simple Direct media Layer) enables to use the graphic interface of most of the operating systems. Moreover, it provides keyboards and mouse support so that the user can navigate in the 3d environment and interact with the window. SDL provides also a lot of features such as sound handling and other device support.
  
 \subsection{3d features}
 
 The 3d geometric object that we print are the sea, the boats, the buoys, the vector fields, the grid pattern and the localisations of the intervals. The sea is made of two layer of transparent blue sqares, so that looking to the sea from the outside looks darker that from the inside. And everything that is in the sea looks blue. The boats geometry have been recovered from an older sailboat control simulation. The veil and rudder are movable. The buoys are simple red spheres.
 
+% IMAGE: shepherd opengl rendering
+\begin{figure}[H]
+	\centering
+    \includegraphics[scale=0.4]{image/shepherd_opengl.png}
+    \caption{simulation rendering with opengl and SDL}
+\end{figure}
 
-\subsection{camera control}
+
+\subsection{Camera control}
 
 The camera control system is a first person view. The camera can be controlled in the six local axis of the view (three rotations and three translations) thanks to the mouse. This enables a practical and intuitive navigation in all directions.
 
 The mouse wheel enables to move forward and backward. holding the left mouse button of the camera while moving the mouse moves the scene perpendicularly to the camera. holding the right mouse button while moving the mouse rotates the camera on an axis perpendicular to the camera axis. holding both right and left button enables to rotate the camera on its axis.
 
-Camera handling is often used by an extern 3 by 3 matrix system that has to be implemented. However, this time, only the OpenGl transformation system has been used to control the camera. OpenGl possessed its own matrix 4 by 4 stack that includes rotation and translation and also includes multiplication function and generation of basic matrix such as rotation and translation matrix. The purpose of this matrix stack is to apply successive affine transformation to the geometry. But we can use it as a computationnal tool. OpenGl provides a function to store in our program the current transformation matrix. So to compute matrix multiplication and rotation matrix generation, we will store the current matrix transformation in a variable; load the matrix we want on the opengl matrix stack; compute transformations; get the result in an other variable; put back the initial transformation result so that opengl has seen nothing. 
+Camera handling is often used by an extern 3 by 3 matrix system that has to be implemented. However, this time, only the OpenGl transformation system has been used to control the camera. OpenGl possessed its own matrix 4 by 4 stack that includes rotation and translation and also includes multiplication function and generation of basic matrix such as rotation and translation matrix. The purpose of this matrix stack is to apply successive affine transformation to the geometry. But we can use it as a computationnal tool. OpenGl provides a function to store in our program the current transformation matrix. So to compute matrix multiplication and rotation matrix generation, we will store the current matrix transformation in a variable; load the matrix we want on the OpenGl matrix stack; compute transformations; get the result in an other variable; put back the initial transformation result so that OpenGl has seen nothing.
+
+\subsection{Communication with the Simulation}
+
+The communication between the simulation and the OpenGl rendering is a client-server link. The simulation is a server on which the OpenGl display connects. As the OpenGl display is soft and very compatible, it can be run on any distant computer, while the simulation need ROS to run.
+
+The communication is binary, allowing a very effective communication. The client and the server know the data structures and just copy part of the communication buffer into structures. The structures are composed of the state variables of the Buoys and Sailboats.
+
+\renewcommand{\lstlistingname}{Code}
+\begin{lstlisting}[language=C++, caption={display opengl communication structures}, frame=single]
+class Sailboat0
+{	
+    public:	
+        double x,y,theta,phi;// position and orientation
+	
+        double fg,fv,gamma,deltav,deltag,deltavmax;  //link variables
+        double a,psi;// wind            
+            
+        double cx,cy;// triangle center
+};
+
+class Buoy0
+{
+    public:
+        double x;// position x
+        double y;// position y
+        double z;// position z
+        double Xdot[3];// Buoy speed
+};
+\end{lstlisting}
 
 \section{Unity3D}
+% IMAGE: Logo Unity*
+\begin{center}
+\includegraphics[scale=0.05]{image/unity-logo.png}
+\end{center}
 \subsection{Presentation}
+\footnote{Section written by Anthony Welte and Camille Soulié}
 
-% IMAGE: Logo Unity
+Unity3D is a game engine developed by Unity Technologies. It is widely used in the development of video games, especially on mobile devices and websites because it is one of the most lightweight game engine available. It uses the aforementioned OpenGL API to use the processing power of the machine it is installed on. It also provides an abstraction level allowing the programmer to easily add 3D Objects in a scene, manage lighting and shading options, textures, sound effects and many other functionalities. Unity also offers a physics engine that can compute collision, gravity as well as more complicated patterns such as moving cloth and water. 
 
-Unity3D is a game engine developed by Unity Technologies. It is widely used in the developpment of video games, especialy on mobile devices and websites because it is one of the more lightweight game engine available. It uses the aforementioned OpenGL API to use the processing power of the machine it is installed on. It also provided an abstraction level allowing the programmer to easily add 3D Objects in a scene, manage lighting option, texture and many other functionalities. Unity also offers a physics engine that can compute collision, gravity as well as more complicated patterns such as moving cloth and water. 
+In our project we use Unity as a graphical engine, it was decided not to use the physic engine in order to have complete control over the behaviors of the sailboats and buoys. The simulation program computes the state of the world, this is then send to Unity that displays the new state of the world. Because Unity is intended to be used more as a pleasing graphical tool than a exact representation of the simulation, liberties may have been taken on the position of the objects in order to obtain smoother movements.
 
-In our project we use Unity as a graphical engine, we choose not to use the physic engine in order to have complete control over the behaviours of the sailboats and buoys. The simulation program computes the state of the world, this is then send to Unity that displays the new state of the world. Because Unity is intended to be used more as a pleasing graphical tool than a exact representation of the simulation, liberties may be taken on the position of the objects in order to obtain smoother movement.
+Finally Unity provides powerful libraries which allow us to display a very realistic simulation. However the position of the objects on the screen depends on the frame rate which depends of the platform used to display the simulation. Therefore the display may be delayed compared to the simulation. In fact, the purpose of Unity in this project was mainly to render the simulation with a high graphic realism and this may be an additional asset to eventually convince a customer more easily. Furthermore the use of Unity3D can be extended with virtual reality since it is compatible with some VR devices such as the Oculus Rift or the HTC Vive. 
+
+\subsection{The Environment of Simulation}
+\subsubsection{Graphical Objects}
+\footnote{Section written by P.Martin and Z.El Abdalaoui}
+As it has been said Unity gives us a great freedom in the creation of environment even with the free version. Thanks to a large number of librairies (more precisely called assets) it is possible to create a realistic scene using water,trees,skybox,ground modeling etc.
+In our project the main purpose was that Ifremer's team could recognize something like the "Rade de Brest" with its huge bridge, coasts ,Ifremer's building. On the whole, the scene has been created in 4 stages.
+
+\begin{itemize}
+\item The first step has been the creation of the ground. Unity provides a large range of tools allowing different modifications of ground's shape.So, we create our plane as a GameObject, then we can add on it several components. In order to create a wide area of sand we added a sand texture, it is just a jpg file which will be repeated many times on the plane. Like that the plane looks like a real (almost) sea floor. 
+\item Now that the texture applicated, it is possible to model the terrain on our own. For this we used a very useful tool. Thanks to this feature, changing the elevation (relief) of our plane. This works like a brush. We can define it size (diameter) and the maximum altitude reached by the plane. It exists several brushes, some create peaks, others just elevated platforms. It is really interesting to model his own plane. you can spend several hours on this task if you want details. Finally here modeling yields this result:
+
+% IMAGE: modeling plane + initial plane
+\begin{figure}[H]
+	\centering
+    \includegraphics[scale=0.4]{image/unity2.jpg}
+    \caption{Plane with texture and after modeling}
+	\end{figure}
+    
+\item The next step consists in adding the main asset of the project. It is not exactly a long step because water plane is already a very powerful asset implemented in Unity. This one allows us to display a very realistic sea plane. We decided to put a reflective water mode. It means that only the sky is reflected on the surface and the water is not transparent too. Several water assets exist in unity, some of them are able to generate waves, movement on the water. However in this project we decided to leave these modules and just keep a simple water. A calm ocean.
+
+
+\item To create a realist scene, we need environment (ground,water,sky..) but also need some 3D objects like building, bridge or road. For this part the community helped us. Indeed thanks to the online 3D library TF3D people share their creation. To display Ifremer's building we used a 3D object representing building which look like Business Office, then to remember the "Rade of Brest" we used a huge bridge.
+
+It is possible and easy to import in Unity stl files or 3D files or Blender files. Keep in mind that we used Unity for the represention and for the graphic performances. However it is really hard to draw or model an accurate object as a boat,or a car with simple assets. (square,plane,circle..) Thus, working on Unity invited us to work on other software (which we did not master or never used at all). This was actually interesting to discover Blender and all the abilities it provides for 3D modeling,Video making, visual rendering etc.
+
+
+
+
+% IMAGE: d'un objet
+\begin{figure}[H]
+	\centering
+    \caption{Buoy (left) and Sailboat (right) models}
+    \includegraphics[scale=0.6]{image/buoy.jpg}
+    \includegraphics[scale=0.6]{image/Sailboat.jpg}
+	\end{figure}
+    
+\item Finally, the last object to control is the camera. Indeed in Unity you can see how does your scripts or your objects behave in the scene with a Camera item. It was crutial for the project in order to observe how our boats and buoys move to drive the camera. We control our camera with the keyboard for the elevation, and the left right turns .And the rotation is controlled with the mouse. We also created a script which allow us to displace the camera as we want.
+\end{itemize} 
+
+In short, the creation of the scene is a long process because it always need some adjustements. Please find in the 5.3.5 part the final result of our scene.
+We can note that even if the result is acceptable we tried to improve it. We tested on script of buoyancy in order to simulate the real boat's movement on the ocean. However that script was not easy to use , so we gave up on this way because it was really hard to control the flux of waves (back and forth). Then we could add the rotation of the sail as a function of the wind. This idea was envisaged, and was not difficult to implement, but we left it aside in order to focus on the localisation of the squad. Finally the final scene is really sufficient and the project seems greatly correspond to expectations even if Unity allows to us to improve it again and again.
+
+\subsubsection{Buoy and Sailboat creation}
+After creating the environment in which the boats and the buoys will move, we need the actual object to display in the scene
+\begin{itemize}
+\item As previousely mentionned, the Unity3D community shares many game objects of their own to use. We used one of these assets found online to represent the sailboats onscreen. But we had to add some more textures to create a realistic sailboat. For instance, since the textures are only seeable from one side, only one side of the sail was displayed. Then to be able to move the sail yaw, we had to split it from the original game object in order to make the sail movable around the mast.
+
+\item The adding of the buoy was much more simple. First we tried to draw the buoy from scratch but as explained in the previous part, it is not something easy to do with the time at our disposal. But in the end we were provided with a 3D CATIA model of a buoy similar to the one usually used. Then we just had to import the model on Unity to display it.
+\end{itemize}
+
+Once the creation of the objects and the scene were done, we could link them to the client-server architecture that manage the position of all the items onscreen. (ie the position of the boats and buoys, the depth of the buoys, the sailboat, and sail yaw.)
+% TODO
+
+\subsubsection{SimulationManager}
+\footnote{Section written by Anthony Welte and Camille Soulié}
+SimulationManager is the main object of the scene. It has two scripts TCPServer.cs and SimulationManager.cs that provide communication with the simulation and dynamically instanciate the objects (sailboats and buoys). 
+
+TCPServer.cs is the implementation of the client-server architecture. It listens to the simulation and records a stream of one or several JSON strings. This stream is then processed to extract individual JSON string that are then sent to SimulationManager.cs.
+
+SimulationManager.cs extracts the data of the messages received from TCPServer.cs and stores them in a queue. Then at every new frame displayed, SimulationManager dequeues a message (if there is one) and updates the scene. It either creates a new object if the message corresponds to a new object or updates the state of an existing entity. 
+We have tried to interpolate the position of the different entities between two received positions in order to reduce the number of messages sent by the simulation but this was more complicated than predicted and this functionality is not fully operational yet. That is why we have chosen for now to increase as much as possible the data flow between the server and the client in order to have the most fluid display possible. % TODO
 
 \subsection{Communication with the simulation}
 \subsubsection{Server-Client link}
+\footnote{Section written by Anthony Welte}
 
-To comunicate between the simulation and Unity, a client-server architecture has been choosen. This choice has servral advantages:
+To communicate between the simulation and Unity, a client-server architecture has been chosen. This choice has several advantages:
 \begin{itemize}
-\item A modular architecture: enabling the two programs to work independantly and making the development of the programs easier to split into two separate teams.
+\item A modular architecture: enabling the two programs to work independently and making the development of the programs easier to split into two separate teams.
 \item An online architecture: enabling the programs to run on a same machine or on distant machines
 \item A language agnostic architecture: enabling the simulation and the display to use different languages (C++ for the simulation, C\# for Unity)
 \end{itemize}
 
 \subsubsection{JSON format}
-
-To communicate data, JSON parsing is used. This method format variables (test, numbers, etc) into a text that contains all the variables and that can be easily extracted by Unity. JSON was introduced by Javascript but librairies are know available on most mainstream languages making it an ideal solution to communicate data between two languages
+\footnote{Section written by Anthony Welte}
+To communicate data, JSON parsing is used. This method format variables (test, numbers, etc) into a text that contains all the variables and that can be easily extracted by Unity. JSON was introduced by Javascript but libraries are know available on most mainstream languages making it an ideal solution to communicate data between two languages
 
 \lstset{
     string=[s]{"}{"},
@@ -262,24 +851,22 @@ To communicate data, JSON parsing is used. This method format variables (test, n
 }
 \end{lstlisting}
 
-This formating made it esay to add a the buoys later in the project. % TODO
-
-\subsection{Unity Objects}
-\subsubsection{Graphical Objects}
-
-% IMAGE: d'un objet
-
-\subsubsection{SimulationManager}
-
-SimulationManager is the main object of the scene. It has two scripts TCPServer.cs and SimulationManager.cs that provide communication with the simulation and dynamically instanciate the objects (sailboats and buoys). 
-
-TCPServer.cs is the implementation of the client-server architecture. It listens to the simulation and record a stream of one or sevral JSON strings. This stream is then processed to extract individual JSON string that are then send to SimulationManager.cs.
-
-SimulationManager.cs extract the data of the messages from TCPServer.cs and either create a new object if the message corespond to a new object or update the state of an existing entity. % TODO
+This formating made it easy to add a the buoys later in the project. % TODO
 
 \subsection{Results}
+\footnote{Section written by Camille Soulié}
+Since the aim of this part of the project is to display a scene, the results of our work is better described by images than by words. You can see below a screenshot of a scene displayed with Unity that gives an good overview of what have been done. We can notice the high realism of the display. Unity can indeed handle the shadows, the reflects, the ripples on the water...
 
+\begin{figure}[H]
+	\centering
+    \caption{Screenshot of a scene displayed with Unity3D}
+    \includegraphics[scale=0.5]{image/DisplayUnityResult.jpg}
+	\end{figure}
 % IMAGE
+\subsection{Thought for enhancement}
+\footnote{Section written by Camille Soulié}
+As mentioned earlier, one way to optimize the display of the simulation might consist in in interpolating the position of the entities between two successive positions and therefore in drastically reducing the data flow between the client and the server. That will enable both more fluidity and the workload decrease of unity.
+We can also add some textures on the entities or some atmosphere sounds like seagull calls, sail slams, slappings... to increase the realism.
 
 % ===================== Conclusion ====================
 \newpage
@@ -291,6 +878,8 @@ SimulationManager.cs extract the data of the messages from TCPServer.cs and eith
 \vspace{5cm}
 
 Conclusion
+\\
+None assigned here yet.
 
 \newpage
 %récupérer les citation avec "/footnotemark"
