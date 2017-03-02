@@ -1,0 +1,7291 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+
+
+%====================== PACKAGES ======================
+
+\usepackage[english]{babel}
+%pour gérer les positionnement d'images
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{pdfpages}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{url}
+%pour les informations sur un document compilé en PDF et les liens externes / internes
+%pour la mise en page des tableaux
+\usepackage{array}
+\usepackage{tabularx}
+%pour utiliser \floatbarrier
+%\usepackage{placeins}
+%\usepackage{floatrow}
+%espacement entre les lignes
+\usepackage{setspace}
+%modifier la mise en page de l'abstract
+\usepackage{abstract}
+%police et mise en page (marges) du document
+%Pour les galerie d'images
+%Pour les codes sources
+\usepackage{listings}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}	%Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}}	%Use Output in the format of Algorithm
+%====================== INFORMATION ET REGLES ======================
+
+%rajouter les numérotation pour les \paragraphe et \subparagraphe
+
+
+
+% ajuste la page à la largueur de l'écran
+%pdfcreator = {MikTeX},% Logiciel qui a crée le document
+%pdfproducer = {}} % Société avec produit le logiciel
+
+%======================== DEBUT DU DOCUMENT ========================
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "% Information sur le document"
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 4
+\tocdepth 4
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%régler l'espacement entre les lignes
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%page de garde
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Title
+
+\shape smallcaps
+\size normal
+Project Report
+\shape default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/logo_SHEPHERD.JPG
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Ou autre image
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.3cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+\size largest
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+uppercase
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+SHEPHERD Project
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.20cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1.0cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/logo_ENSTA.jpg
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+textsc{
+\backslash
+textbf{ENSTA Bretagne}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\end_inset
+
+ 
+\size normal
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{0
+\backslash
+baselineskip}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Author
+ 
+\series bold
+Students
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape smallcaps
+El Jawad.A, Chanu.S, Sola.Y, Welte.A, Soulie.C, Benet.P, Mehdi.N, 
+\shape default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape smallcaps
+Galland.A, Barronier.R, El Abdalaoui.Z, Finand.C, Zhu.L, Pertierre.S, 
+\shape default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape smallcaps
+Ennouhi.F, Bernardes.E, Tanguy.F, Martin.P
+\shape default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
+Supervisor
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape smallcaps
+Luc Jaulin, ENSTA Bretagne
+\shape default
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%page blanche
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%ne pas numéroter cette page
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Abstract
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Author : Simon CHANU
+\end_layout
+
+\end_inset
+
+ The SHEPHERD Project aims to command a swarm of robotic oceanographic buoys
+ by the astute use of the different directions of the current at along the
+ water column, with the help of an acoustic localization system provided
+ by robotic sailboats acting as shepherds.
+ This paper describes the simulation created to validate the foundations
+ of the project.
+ This simulation uses simple models and equations to effectively command
+ a swarm of robots.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%espacement entre les lignes d'un tableau
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\arraystretch}{1.5}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%====================== INCLUSION DES PARTIES ======================
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%recommencer la numérotation des pages à "1"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{0}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Presentation of the Shepherd project
+\end_layout
+
+\begin_layout Section
+Given issue
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section Written by Camille Finand
+\end_layout
+
+\end_inset
+
+ The issue the project is trying to solve in an issue raised by IFREMER.
+ They wish to realize a three dimensional map of the turbulent flow of currents
+ in ocean.
+ To this end, they wish to deploy a swarm of buoy robots, left to drift
+ with the current, at a know variable depth.
+\end_layout
+
+\begin_layout Standard
+Our mission was to design such a swarm of buoy robots, their shepherd sailing
+ boats
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+see "Our solution" section for more details
+\end_layout
+
+\end_inset
+
+ and to realize a simulation of experiment through interval calculus.
+\end_layout
+
+\begin_layout Section
+Our solution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section Written by Camille Finand
+\end_layout
+
+\end_inset
+
+ In order to solve the given issue we decided to introduce "shepherd sailboats".
+ Because our buoys are unable to locate themselves via GPS while under water,
+ the sailboats act as interfaces between the GPS network and the underwater
+ buoys.
+\end_layout
+
+\begin_layout Standard
+There will be four shepherd boats providing a frame for the buoys to locate
+ themselves in.
+ This localization will be realized through calculating the 
+\emph on
+Time Difference Of Arrival
+\emph default
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+see section 1.3 TDOA method
+\end_layout
+
+\end_inset
+
+ of four acoustics pings.
+ Each boat send a unique synchronized ping received by all the buoys that
+ can then estimate their position relatively to the boats.
+\end_layout
+
+\begin_layout Standard
+This allows us to have a relative control over our swarm of buoys dispersion.
+ Having a map, or at least a local map, we can indeed chose the current
+ that best match our expectations for the chosen dispersion or displacement
+ of the swarm.
+ Such a dispersion and or position will be a fixed chosen interval of positions
+ in the four sailboats frame.
+\end_layout
+
+\begin_layout Standard
+However the positioning is relative to the sailboats and not necessarily
+ known by the buoys.
+ So they need to come back to the surface during the mission in order to
+ precisely update their position and centralize their data.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/ProjectSchem.png
+	scale 90
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "ProjectSchem"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Buoy localization and control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Buoys are controlled in depth via Ballasts and pressure captors.
+ The sailboats are not controlled in position but rather follow lines that
+ forms triangle.
+ It is indeed much simpler than having them strictly sticking to a point,
+ and we don't really need them to be on a specific place at a given time,
+ they just need to be close enough and far enough to each other to give
+ the buoys an adapted frame in which to position themselves.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Interval Analysis
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by M.
+ Fadil Ennouhi and F.
+ Tanguy
+\end_layout
+
+\end_inset
+
+ Interval analysis aims to use sets of intervals, rather than sets of real
+ numbers in arithmetic.
+ Thus performing the same simple operations such as sum and multiplication
+ on intervals.
+ The usefulness of this particular method lies in its tolerance to uncertainty.
+ In the SHEPHERD Project our sensors and methods inherently cause uncertainty,
+ making the use of Interval Analysis in the localization procedure almost
+ compulsory.
+\end_layout
+
+\begin_layout Subsection
+Application
+\end_layout
+
+\begin_layout Standard
+In our simulation we restricted the problem to a buoy trying to find its
+ location using the data fed by four sailboats.
+ We then use the SIVIA algorithm to estimate the position of the buoy.
+ The Set Inversion Via Interval Analysis globally consists of performing
+ set inversion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\text{if f: }\mathbf{R^{n}}\rightarrow\mathbf{R}^{m}\text{ and }\mathbf{Y}\subset\mathbf{R^{m}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{X}=\{x\in\mathbf{R^{n}}\ |f(x)\in\mathbf{Y}\}=f^{-}1\mathbf{(Y)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We strongly recommend viewing the videos of M.
+ Luc Jaulin on this subject which can be found on YouTube.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/sivia.png
+	width 40line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The SIVIA algorithm.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIVIA"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the SIVIA algorithm, a list of boxes is generated which corresponds
+ to the localization of the robot.
+ There are three different areas, one representing the position of the robot
+ (the inner area).
+ The outer area does not contain the robot, and the last area correspond
+ to the border, the size of this area depends on the minimum size of the
+ boxes.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/loca_IA.png
+	width 40line%
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ Illustration of the SIVIA algorithm (blue:outer area, red:inner area(buoy),
+ yellow:estimated position of the buoy green: sailboats)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIVIA picture"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+TDOA
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "section:tdoa"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by E.
+ Bernardes and S.
+ Pertierre
+\end_layout
+
+\end_inset
+
+ In our settings we have four boats that should simultaneously send signals
+ to the buoy, informing their positions (known due to each boat's GPS system)
+ and time of emission (each boat has also an internal clock, considered
+ to be synchronized).
+ The buoys have to be programmed in a way that make it possible for them
+ to receive these data and calculate their position.
+\end_layout
+
+\begin_layout Standard
+One possible way to solve this problem is to put a clock inside each buoy.
+ In this way, using the fact that we know the signal's velocity in the sea,
+ we can easily calculate the distances of the buoy to each one of the boats
+ by doing the following calculation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{n}=||p-q_{n}||=c(t_{n}-t_{0})\label{eq:distance}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $d_{n}$
+\end_inset
+
+ is the distance of the buoy to the 
+\begin_inset Formula $n$
+\end_inset
+
+th boat, 
+\begin_inset Formula $q_{n}=(q_{nx},q_{ny},q_{nz})$
+\end_inset
+
+ is the position of said boat, 
+\begin_inset Formula $p=(p_{x},p_{y},p_{z})$
+\end_inset
+
+ is the buoy's position in the sea, 
+\begin_inset Formula $c$
+\end_inset
+
+ is the signal's velocity in the medium, 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ is the time of emission and 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ is the time when the buoy receive the 
+\begin_inset Formula $n$
+\end_inset
+
+th boat's signal.
+ We can calculate all distances in this way and then triangulate the buoy's
+ position.
+\end_layout
+
+\begin_layout Standard
+It is indeed a simple and efficient method of calculation.
+ Nevertheless, it can be difficult to guarantee that the buoy's internal
+ clock is well synchronized with those of the boats, raising the possibility
+ of high uncertainties in the calculations.
+ It is not impossible to do so, but the needed precision clock can be expensive.
+ The Time Difference of Arrival (TDOA) method is proposed to replace this
+ method of calculation and overcome this difficulty.
+\end_layout
+
+\begin_layout Subsection
+Method principle
+\end_layout
+
+\begin_layout Standard
+The method consists in substituting the buoy's clock with a chronometer.
+ The chronometer is not capable of knowing the exact moments of the signals
+ arrivals, but it is able to keep track of the time difference between each
+ signal.
+\end_layout
+
+\begin_layout Standard
+When the buoy receives the first boat's signal, if launches the chronometer
+ and waits for the arrival of the other signals, keeping track of the time
+ between then.
+ They buoy stores then the values 
+\begin_inset Formula $\tau_{2}=t_{2}-t_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{3}=t_{3}-t_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{4}=t_{4}-t_{1}$
+\end_inset
+
+; as shown in the Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:time_differences"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/time.png
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Time difference values are stored by the buoy.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:time_differences"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distance"
+
+\end_inset
+
+ is still valid, and applying it to our project, we have the system of linear
+ equations described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distance_system"
+
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align}
+d_{1}=||p-q_{1}|| & =c(t_{1}-t_{0})\nonumber \\
+d_{2}=||p-q_{2}|| & =c(t_{2}-t_{0})\\
+d_{3}=||p-q_{3}|| & =c(t_{3}-t_{0})\nonumber \\
+d_{4}=||p-q_{4}|| & =c(t_{4}-t_{0})\nonumber 
+\end{align}
+
+\end_inset
+
+Substituting the time differences 
+\begin_inset Formula $\tau_{n}$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distance_system"
+
+\end_inset
+
+, we have the following final system: 
+\begin_inset Formula 
+\begin{align}
+||p-q_{1}|| & =c(t_{1}-t_{0})\nonumber \\
+||p-q_{2}|| & =c(t_{1}+\tau_{2}-t_{0})\\
+||p-q_{3}|| & =c(t_{1}+\tau_{3}-t_{0})\nonumber \\
+||p-q_{4}|| & =c(t_{1}+\tau_{4}-t_{0})\nonumber 
+\end{align}
+
+\end_inset
+
+Since 
+\begin_inset Formula $q_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $c$
+\end_inset
+
+, 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{n}$
+\end_inset
+
+ are all known, then the only unknowns in the system are 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{y}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{z}$
+\end_inset
+
+.
+ Since we have 4 equations and 4 unknowns, we can easily solve this system
+ to find the 
+\begin_inset Formula $p$
+\end_inset
+
+ vector.
+ Since the buoy's are also equipped with ballasts, we also known the value
+ 
+\begin_inset Formula $p_{z}$
+\end_inset
+
+ in our case, our number of equations is bigger than our number of unknown
+ variables.
+\end_layout
+
+\begin_layout Subsection
+Geolocation problem with random error
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The subsection "1.4.3 Geolocation problem with random error" were written
+ by Lei Zhu.
+\end_layout
+
+\end_inset
+
+ We assume we are in 2D and there are 4 sailboat (as described in our problem
+ definition).
+ We generate a gaussian random variable 
+\begin_inset Formula $\epsilon_{i}$
+\end_inset
+
+ with mean 0 and variance 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+ We not the time arrival of source 1 signal 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+, it may contain the receiver clock offset.
+\begin_inset Newline newline
+\end_inset
+
+ We have thereby 4 equations: 
+\begin_inset Formula 
+\begin{align}
+||p-q_{1}|| & =c(t_{1}-t_{0})+\epsilon_{0}\nonumber \\
+||p-q_{2}|| & =c(t_{1}+\tau_{2}-t_{0})+\epsilon_{1}\\
+||p-q_{3}|| & =c(t_{1}+\tau_{3}-t_{0})+\epsilon_{2}\nonumber \\
+||p-q_{4}|| & =c(t_{1}+\tau_{4}-t_{0})+\epsilon_{3}\nonumber \\
+\label{eq:distance_tdoa_}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Known variables are: 
+\begin_inset Formula $c$
+\end_inset
+
+, 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Unknown variables are: 
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+,
+\begin_inset Formula $\epsilon_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The problem is undetermined because of the noise on the estimation of distances.
+\end_layout
+
+\begin_layout Standard
+The Geolocation problem becomes the following minimization problem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\mathbf{x},t_{1})=\sum\Big(||\mathbf{x-x_{1}}||-c(\tau_{i}+t_{1}-t_{0})\Big)^{2}/e_{i}^{2},\tau_{0}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Team management methods
+\end_layout
+
+\begin_layout Section
+Scrum
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The section "2.1 Scrum" and its subsections "2.1.1 Agile Software Development"
+ and "2.1.2 Scrum Methodology" were written by Yoann SOLA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Agile Software Development
+\end_layout
+
+\begin_layout Standard
+The traditional methods of project management, such as the "V-Model" for
+ example, are not appropriate with software engineering.
+ Indeed, they are too inflexible, they induce a lack of reactivity and they
+ ask for too many deliverables.
+ These methods are predictive methods because they need to plan every single
+ detail of the project, before even starting to code anything.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A proof of this inefficiency is the "Chaos Report", published in 1995 by
+ the Standish Group, which studied about 8380 software projects, taken from
+ 365 companies.
+ It showed that 16,2% of the projects were compliant with the initial forecasts,
+ 52,7% of them were over the initial budget and went over the initial deadline,
+ and 31,1% of them were cancelled during their development.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Based on this observation, 17 experts in software engineering decided to
+ create in 2001 the Agile Alliance and "The Manifesto for Agile Software
+ Development", which describes the values of the Agile methodology in software
+ engineering.
+ There are four fundamental values in the Agile methodology : 
+\end_layout
+
+\begin_layout Itemize
+people and communication BEFORE processes and tools 
+\end_layout
+
+\begin_layout Itemize
+operational features BEFORE the documentation 
+\end_layout
+
+\begin_layout Itemize
+interacting with the client INSTEAD OF contractual relations 
+\end_layout
+
+\begin_layout Itemize
+accepting the change INSTEAD OF always following initial plans
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Here are some of the most known methods : ASD (Adaptative Software Development),
+ Crystal, DSDM (Dynamic Software Development Method), Lean, Scrum, XP (eXtreme
+ Programming).
+ We used the Scrum methodology in the SHEPHERD Project.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scrum Methodology
+\end_layout
+
+\begin_layout Standard
+The principle of the Scrum methodology is to organize the project in phases
+ called "sprints" (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scrum_overview"
+
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/SCRUM-overview-resize.png
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An overview of the Scrum methodology.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scrum_overview"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+ Indeed, each time a feature of the software is defined by the team (at
+ the beginning or during the project), it is added to a database called
+ the "Product Backlog".
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A sprint is often a phase of several weeks, which has to produce a fully
+ operational prototype at its end, even if the prototype includes a feature
+ which is not going to be kept for the final version of the software.
+ For that purpose, the features that are going to be implemented during
+ the current sprint are taken from the Product Backlog and are stored in
+ an other database called the "Sprint Backlog".
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to be sure that no one is encountering some troubles, daily morning
+ meeting of 15 minutes are organized by the team, called "Scrums".
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, the Scrum methodology uses some useful tools such as the "Kanban
+ Board" (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kanban"
+
+\end_inset
+
+) and the "Burn-down Chart" (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:burndown_chart"
+
+\end_inset
+
+), which allows to check if the work will be finished on time if we kept
+ the current pace of work.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/kanban-1.jpg
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a kanban Board.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kanban"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/burndown-chart-formula.jpg
+	width 70line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a burn-down chart.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:burndown_chart"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, three roles are defined by the Scrum methodology for each member
+ of the team :
+\end_layout
+
+\begin_layout Itemize
+the Product Owner : it is the person who has to be constantly in relation
+ with the client and has to fill the Product Backlog with him.
+ 
+\end_layout
+
+\begin_layout Itemize
+the Scrum Master : this is the project manager who has to apply correctly
+ the Scrum methodology and has to be sure that each member of the team has
+ good working conditions.
+ 
+\end_layout
+
+\begin_layout Itemize
+member of the Scrum Team : this is the team of developer which has to implement
+ features from the Product Backlog.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+In order to implement the Scrum methodology in the SHEPERD project, we use
+ an online platform that allows to easily manage all aspects of this Agile
+ software development method : taiga.io (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:taiga_logo"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/taiga_io.png
+	width 60line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logo of the platform taiga.io.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:taiga_logo"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Github
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Simon Chanu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Github is a website created as free public code repository that facilitate
+ the use of the version control system named Git.
+\end_layout
+
+\begin_layout Subsection
+Introduction to Git and Version control systems
+\end_layout
+
+\begin_layout Subsubsection
+Version control system
+\end_layout
+
+\begin_layout Standard
+A version control system is a powerful tool used by software development
+ teams to increase the efficiency of coding in team.
+ It is heavily used, if not essential to nowadays software development.
+ It can be a standalone application (such as Git) or it can be embedded
+ in other applications or webapplications (such as Wikipedia).
+ There is a large number of different software that provides a version control
+ system (VCS), but the most commonly used nowadays is Git.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ The VCS several advantages : 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Simultaneous coding
+\series default
+ : two members of a team can edit the same file then merge theirs modifications.
+ Thus it allows for efficient teamwork.
+ There is no need anymore to warn the other people of the team that you
+ are working on this specific file and the others must not modify it.
+ This is by far the most interesting feature by making merging code very
+ easy.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Versioning
+\series default
+ : there is no need to create lots of backup anymore.
+ You can revert the code to previous modifications.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Branching
+\series default
+ : the code can be separated in different versions.
+ This tool can be used to store versions of the code for different OS for
+ example.
+ But a more common use today is to split versions to implement a new but
+ still buggy feature in the code while the ancient version stays the same.
+ This system will be explained with git in details later.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cloud developpement
+\series default
+ : The code can be stored locally or on a remote server.
+ Therefore this is decentralized : it allows to get the sourcecode from
+ anywhere you want and work on it very easily.
+ Moreover if the developer makes a huge mistake and delete everything, he
+ can just download it back to his computer from the remote server.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Git
+\end_layout
+
+\begin_layout Standard
+Git is a version control software created by Linus Thorvald (Creator of
+ Linux) in 2005.
+ It was created at the begining as a development tool for the linux kernel.
+ The tool much quicker, secure and supporting distributed development that
+ any version control development at that time, This software is available
+ on Linux, Windows, Mac, Solaris.
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+https://git-scm.com/downloads
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/git.png
+	width 20line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logo of Git
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:git_logo"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Git is now the most widely used source code management tool with 42.9% of
+ professional software developers using it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+https://eclipse.org/org/community_survey/Survey_Final_Results_2012.xls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+How does it work ?
+\end_layout
+
+\begin_layout Standard
+In this section, we will focus on the practical use of Git.
+ First of all, git is a command line software.
+ The main commands are explained below.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Commands
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git clone
+\series default
+ : clone a repository from a remote server to a local folder.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git status
+\series default
+ : give the current status of the repository and the state of its files.
+ It gives informations about the changes in the repository : which file
+ has been modified, deleted, created, which modification will be sent to
+ the remote in case of a commit push.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git pull
+\series default
+ : the main command to recover the changes from the remote server.
+ If some changes have been made to your local copy of the code, it will
+ warn you an try an automatic merge of the files.
+ If there is conflicts that can't be resolved automatically, it will warn
+ the user and let it take care of them.
+ It advised to commit any changes to your local copy before pulling from
+ the remote.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git add
+\series default
+ : validate the changes so can be inserted in a commit.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git commit
+\series default
+ : register the changes of the local repository so they can be sent to the
+ remote.
+ A git commit must have an explanatory message which describes the changes
+ and why did they happened.
+ This message can be short or long but an input is required from the user.
+ A good habit is to always make comprehensive messages about the changes,
+ so if there is any problem, the code can be easily reverted to a previous
+ commit.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git push
+\series default
+ : the main command to send the local changes to the remote.
+ It sends the commit you have registered with git commit.
+ If any changes has been made on the remote and they haven't been pulled,
+ then the push will be rejected.
+ The user must pull the changes or merge the codes to be able to push all
+ the commits.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+git merge
+\series default
+ : merge two version of a repository together.
+ It takes one version and merge inside the code from the other version.
+ If the merge can't be done automatically because of unresolvable conflicts,
+ a merging process will begin.
+ With a git status it is possible to see the conflicting files.
+ When the conflicting files have been modified, add them and commit them
+ to resolve the merge.
+\end_layout
+
+\begin_layout Paragraph
+Branches
+\end_layout
+
+\begin_layout Standard
+As it was said above, the code can be split into different existing version
+ among the same repository.
+ These version are called branches.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gitbranch_logo"
+
+\end_inset
+
+ explains how to use it effectively.
+\end_layout
+
+\begin_layout Standard
+In a professional software project there is at least usually two branches
+ : 
+\shape italic
+Master
+\shape default
+ and 
+\shape italic
+develop
+\shape default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Master
+\series default
+ is the stable, reliable last working version of the code.
+ It's the one customers will download.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+develop
+\series default
+ is the unstable, but as stable as possible, development branch.
+ This is the next iteration of the software.
+ Any developed features end up in the 
+\shape italic
+develop
+\shape default
+ branch, waiting to be extensively tested before it is allowed to move into
+ the 
+\shape italic
+master
+\shape default
+ branch 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Features branches
+\series default
+ are usually the rest of the branches.
+ They are created when an independent feature of the software is developed.
+ The development can continue in the branch until finished.
+ Then it can be merged into 
+\shape italic
+develop
+\shape default
+ for further testing.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/GitBranch.jpg
+	width 100line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Branching system
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gitbranch_logo"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system simplify greatly the workflow.
+ Each merge from develop into master is a new release.
+ Each new feature has it's own branch.
+ On the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gitbranch_logo"
+
+\end_inset
+
+, it's possible to see this workflow : 
+\end_layout
+
+\begin_layout Enumerate
+A new improvement for the software is planned with several features (A and
+ B).
+ The 
+\shape italic
+develop
+\shape default
+ branch is already up to date with the 
+\shape italic
+master
+\shape default
+ branch.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The branches from the features are created.
+ They both comes from 
+\shape italic
+develop
+\shape default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Some developers work on the features and add, commit then push some changes.
+ 
+\end_layout
+
+\begin_layout Enumerate
+At some point, the dev team from 
+\shape italic
+Feature A
+\shape default
+ has finished their job.
+ In order to always have the latest version, they merge the code from develop
+ into their branch, resolve the conflicts on their branch, and debug the
+ software.
+ Then they merge automatically into 
+\shape italic
+develop
+\shape default
+ from 
+\shape italic
+Feature A
+\shape default
+ 
+\end_layout
+
+\begin_layout Enumerate
+The team of 
+\shape italic
+Feature B
+\shape default
+ does the same job after.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Then when the software is fully debugged and tested.
+ The 
+\shape italic
+develop
+\shape default
+ branch can merge into 
+\shape italic
+master
+\shape default
+.
+ This is a release.
+ 
+\end_layout
+
+\begin_layout Standard
+You can find more about how to work collaboratively with git 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.atlassian.com/git/tutorials/comparing-workflows"
+
+\end_inset
+
+.
+ If you want to find tutorials about git, it's 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://openclassrooms.com/courses/gerez-vos-codes-source-avec-git"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Github
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/github.jpg
+	width 40line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logo of Github
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:github_logo"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Github is a website created in 2008 by Tom Preston-Werner, Chris Wanstrath
+ and PJ Hyett.
+ It provides an internet hosting service and an web based git and project
+ manager.
+ This website provides free remote servers to host the repositories.
+ This access is public and anyone can see the source code pushed on on Github
+ unless a subscription is paid.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ This website provides as well project management tools, such as a kanban
+ board, a way to specify an track issues on the code, and a interface for
+ most of the difficult git operations.
+ The use of these services are free and require only an inscription.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Our project being an open-source research project.
+ The ease of use and the tools provided made this website the best candidate
+ to host our remote repositories.
+ Therefore we decided to create an organization on the website to host our
+ repositories.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ This organization can be found at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/ENSTA-Bretagne-Shepherd"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Architecture of the project
+\end_layout
+
+\begin_layout Subsubsection
+First decentralized architecture
+\end_layout
+
+\begin_layout Standard
+At first we decided to decentralize our work into 3 repositories : Shepherd-Simu
+lation, Shepherd-Display, Shepherd-Localization.
+ Then these projects would be included as submodules into Shepherd-Main.
+ Another repository, called Ressources-internes-et-administration has been
+ created to host our work documents on the software.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ It happened that this first approach was not very effective.
+ Indeed several types of display have been developed and the number of repositor
+y has been multiplied.
+ Moreover the communication between the different parts of the code was
+ difficult to implement.
+\end_layout
+
+\begin_layout Subsubsection
+Migration on ROS
+\end_layout
+
+\begin_layout Standard
+That's why a Shepherd-Ros-Structure repository has been created.
+ We integrated the code from the other repository inside ROS.
+ ROS is a middleware that will be presented later in the report.
+ With this integration the project needs only one repository.
+ As presented above, we follow the good rules of conduct in the use of git.
+ Our master branch is the stable up-to-date version of the code and the
+ develop is the development one.
+\end_layout
+
+\begin_layout Chapter
+Simulation theory
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "section:simulation"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Simulation of the environment
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The section "3.1 Simulation of the environment" was written by Lei Zhu.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Taking the complexity of modeling a lac into consideration, we had made
+ some simplifications to our simulated environment.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The situation of wind in the real world is really intricate.
+ Even the most experienced meteorologist cannot predict the variation of
+ wind for a 100% accuracy.
+ In our case, it is next to impossible to simulate the wind in an open sea
+ area.
+ Even if we generate randomly the force, this makes no sense except give
+ out a confusing motion of the sailboat under irregular wind.
+ Conversely, if we suppose the wind as constant, we don't really lost the
+ similarity to real word.
+ Meanwhile, we get a lot of time saved as well as the illustration simplified.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the part of waves, we studied the existing work by Mr.Ponte about the
+ analytical solutions of plausible oceanic flows.The mathematic model of
+ multiple 3D eddies is given as Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eddies"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\psi & =\sum\psi_{i}e^{-||\mathbf{x-x_{i}}||^{2}/R_{i}^{2}}\times\cos\frac{N}{c_{n}}(z+h)\\
+c_{n} & =\frac{NH}{n\pi}\space(n>0\space,\space\frac{N}{c_{0}}=0)\\
+u & =-\partial_{y}\psi=\sum\psi_{i}\frac{2y(y-y_{i})}{R_{i}^{2}}e^{-||\mathbf{x-x_{i}}||^{2}/R_{i}^{2}}\\
+v & =\partial_{x}\psi=\sum\psi_{i}\frac{-2x(x-x_{i})}{R_{i}^{2}}e^{-||\mathbf{x-x_{i}}||^{2}/R_{i}^{2}}\label{eq:eddies}
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This model and simulation of eddies enlightened us.
+ However, we find that the sailboat will always work on the sea level and
+ we do not need a 3D simulation of the water.
+ Furthermore, from this model we take notice of that the water stream on
+ the sea level is rather small than under the water.
+ Therefore we chose to ignore the wave so that waves are not simulated eventuall
+y.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In brief, our simulated environment is under a series of assumption: 
+\end_layout
+
+\begin_layout Itemize
+There is no wave on the horizontal surface; 
+\end_layout
+
+\begin_layout Itemize
+The water stream is negligible; 
+\end_layout
+
+\begin_layout Itemize
+The wind is with unchangeable power and direction.
+ 
+\end_layout
+
+\begin_layout Section
+Simulation of the sailboats
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The section "3.2 Simulation of the sailboats" was written by Lei Zhu.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+External forces and assumption
+\end_layout
+
+\begin_layout Standard
+As explained in the previous chapter, we analyzed the complexity and compared
+ the result of different choices, and finally we assume that the wind is
+ constant and the water surface is static.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Chiefly, there are two media, air and water, are in touch with the sailboats
+ directly.
+ Among all the forces given by air and the water, the friction and damping
+ are insignificant.
+ For this reason, there are also only two kinds of external forces can give
+ out perceptible influence on our simulative sailboats: the wind and the
+ wave.
+ There is no force from the land.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To sum up, we designed our method for simulating the the wind and the wave:
+ the wave is supposed to be zero and the wind is a constant force with a
+ fixed direction.
+\end_layout
+
+\begin_layout Subsection
+State representation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/state_representation.jpg
+	width 60line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Force illustration and state representation of sailboat
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:state_repre"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:state_repre"
+
+\end_inset
+
+, we denote a triple 
+\begin_inset Formula $(x,y,\theta)$
+\end_inset
+
+ to represent the state of the boat.
+ Here x and y is its geometry coordinate while 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is its heading.
+ Except for the 3 state variables, all the others are used for calculation.
+ Their physic meaning and units are shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:used_var"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:used_var"
+
+\end_inset
+
+Used variables in sailboat state representation.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Physic Representation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unit 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+midrule
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $v$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+advancing speed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m/s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\omega$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+angular speed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rad/s 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\psi$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wind angle 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rad 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{s}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+force of the wind 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+force of the water on the rudder 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+N 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{s}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sail angle 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rad 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rudder angle (input) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rad 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{s}^{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maximum angle of the sail(input) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rad
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Control algorithm
+\end_layout
+
+\begin_layout Standard
+Given 2 points 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+ to pass through, a sailboat can be controlled by a model-free method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "robmob"
+
+\end_inset
+
+.
+ As we have mentioned in previous subsection, the sailboat has two inputs
+ which are the rudder angle 
+\begin_inset Formula $u_{1}=\delta_{r}$
+\end_inset
+
+ and the maximum angle of the sail 
+\begin_inset Formula $u_{2}=\delta_{s}^{max}$
+\end_inset
+
+.
+ We realized a controller by Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg_sailboat_controller"
+
+\end_inset
+
+, witch was proposed my Mr.Jaulin on his paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jaulin2013interval"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sailboat controller algorithm
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg_sailboat_controller"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}
+\end_layout
+
+\end_inset
+
+[1] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%此处的[1]控制一下算法中的每句前面都有标号 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+REQUIRE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathbf{m}$
+\end_inset
+
+,
+\begin_inset Formula $\theta$
+\end_inset
+
+, 
+\begin_inset Formula $\psi$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ENSURE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\delta_{r}$
+\end_inset
+
+,
+\begin_inset Formula $\delta_{s}^{max}$
+\end_inset
+
+, 
+\begin_inset Formula $q$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $e=det(\frac{\mathbf{b}-\mathbf{a}}{||\mathbf{b}-\mathbf{a}||},\mathbf{m}-\mathbf{a})$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+IF
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $|e|>r$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $q=sign(e)$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ENDIF
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\phi=angle(\mathbf{b}-\mathbf{a})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\bar{\theta}=\phi-atan(\frac{e}{r})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+IF
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $cos(\phi-\bar{\theta})+cos\zeta<0$
+\end_inset
+
+ or 
+\begin_inset Formula $(|e|<r$
+\end_inset
+
+ and 
+\begin_inset Formula $(cos(\psi-\phi)+cos\zeta<0))$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\bar{\theta}=\pi+\psi-q\zeta$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ENDIF
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\delta_{r}=\frac{\delta_{s}^{max}}{\pi}sawtooth(\theta-\bar{\theta})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+STATE
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\delta_{s}^{max}=\frac{\pi}{2}(\frac{cos(\psi-\bar{\theta})+1}{2})^{\frac{log(\frac{\pi}{2\beta})}{log(2)}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This algorithm stands for the control of a sailboat with 3 sensors.
+ That is to say, the heading 
+\begin_inset Formula $\theta$
+\end_inset
+
+, the wind angle 
+\begin_inset Formula $\psi$
+\end_inset
+
+ and the position of its physic center 
+\begin_inset Formula $\mathbf{m}=(x,y)$
+\end_inset
+
+ can be captured all the time during its advance process.
+ For the part of actors, 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ are the two motors to control the movement of sailboat.
+ Therefore, the controller will give out 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ as output.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this algorithm, we used a very simple idea: when the error between the
+ aim and reality surpass a threshold, the aim will be adjusted by a coefficient.
+ Then with the help of two functions atan() and sawtooth, it is not complicated
+ to generate a feedback.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+More concretely, we designed a triangle path of side 100m for each sailboat.
+ And 4 sailboats will work together to follow their triangles respectively.
+\end_layout
+
+\begin_layout Section
+Simulation of the buoys
+\end_layout
+
+\begin_layout Subsection
+The Controller of the buoys
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The subsection "3.3.1 Controller of the buoys" was written by Yoann SOLA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By default, buoys constantly go up and down inside a water column of the
+ ocean, in order to measure the direction of ocean currents at different
+ depths.
+ They can go down until a depth of 1 km and their speed cannot be over 1
+ m/s.
+ They are able to move vertically thanks to ballasts.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+They are able to know the direction of ocean currents at a given level of
+ depth by measuring their own acceleration.
+ Indeed, the acceleration of the buoy has the same direction than the direction
+ of ocean currents.
+ This is due to the fact that buoys are moved by ocean currents.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to prevent buoys from drifting too far, they need to move towards
+ the barycenter formed by the 4 sailboats.
+ This principle allows to keep the group cohesion between buoys.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As buoys know the ocean currents of a given water column, they can reach
+ the depth (thanks to their ballasts) which is going to correspond to the
+ best ocean current allowing to move towards the barycenter of the sailboats.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, they must surface every 5 hours in order to synchronize their internal
+ clock with GPS signals.
+\end_layout
+
+\begin_layout Subsection
+The state equations of the buoys
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The subsection "3.3.1 Controller of the buoys" was written by Alexandre GALLAND.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We consider that our system, the sea, can be represented by an incompressible
+ fluid.
+ Thus, we can define a stream function noted 
+\begin_inset Formula $\psi$
+\end_inset
+
+, which will determine the map of displacement of a particle in the fluid.
+ Futhermore, we consider that the buoy will behave as a passive particle,
+ letting itself drift with the current.
+ In the case of two-dimensional, divergence-free Eulerian velocity fields,
+ the equations of motion for a passive particles are : 
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{matrix}\frac{\mathrm{d}x}{\mathrm{d}t}=u(x,y,t)=\frac{\partial\psi}{\partial y}\\
+\frac{\mathrm{d}y}{\mathrm{d}t}=v(x,y,t)=-\frac{\partial\psi}{\partial x}
+\end{matrix}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\series bold
+u(x)
+\series default
+ = [u(x,y,t),v(x,y,t)].
+ We will consider the following system as the equations describing the dynamics
+ of advected impurities 
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{matrix}\frac{\mathrm{d^{2}}x}{\mathrm{d}t^{2}}=\delta\frac{\mathrm{D}u}{\mathrm{D}t}-\mu(\frac{\mathrm{d}x}{\mathrm{d}t}-u)\\
+\frac{\mathrm{d^{2}}y}{\mathrm{d}t^{2}}=\delta\frac{\mathrm{D}v}{\mathrm{D}t}-\mu(\frac{\mathrm{d}y}{\mathrm{d}t}-v)
+\end{matrix}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t}=\frac{\partial\mathbf{u}}{\partial t}+\mathbf{(u.\nabla)u}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta=\frac{\rho_{f}}{\rho_{b}}$
+\end_inset
+
+ is the ratio of the fluid density 
+\begin_inset Formula $\rho_{f}$
+\end_inset
+
+ to the density of the buoy 
+\begin_inset Formula $\rho_{b}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu\simeq1$
+\end_inset
+
+ is the dynamic viscosity ofthe water.
+ 
+\begin_inset Formula $\delta\frac{\mathrm{D}\mathbf{u}}{\mathrm{D}t}$
+\end_inset
+
+ represents the force per unit volume that would be exerted by the fluid
+ on a fluid particle placed at the position of the impurity (similarly to
+ the Archimede's principle).The second terms represents the Stockes drag
+ felt by the buoy whose velocity is different from the flow velocity.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This equation does not yet consider the dsiplacement induced by the ballasts.The
+ ballast can be compared as a syringe filled with water, connected to the
+ extern environment.
+ A piston pushes (or pulls) water ouside (or inside) the buoy, changing
+ its volumic mass.
+ The command received by the simulation from the controller is understood
+ by the simulation as the desired speed for the piston in the ballast.
+ The vertical acceleration of the buoy is then computed using Newton's second
+ law.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\frac{\mathrm{d^{2}}z}{\mathrm{d}t^{2}}=g-\rho_{w}\frac{\left(V-\xi S\right)}{m}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the mass of the buoy, 
+\begin_inset Formula $V$
+\end_inset
+
+ its volume when the ballast is empty, 
+\begin_inset Formula $S$
+\end_inset
+
+ the surface of the piston, and 
+\begin_inset Formula $\xi$
+\end_inset
+
+ the place of the piston in the ballast (if 
+\begin_inset Formula $\xi=0$
+\end_inset
+
+ the ballast is empty).
+ 
+\begin_inset Formula $\rho_{w}$
+\end_inset
+
+ is the volumic mass of the water, and 
+\begin_inset Formula $g$
+\end_inset
+
+ is the gravitation acceleration.
+\begin_inset Newline newline
+\end_inset
+
+ The final form of the dynamic equation is then 
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{matrix}\frac{\mathrm{d^{2}}x}{\mathrm{d}t^{2}}=\delta\frac{\mathrm{D}u}{\mathrm{D}t}-\mu(\frac{\mathrm{d}x}{\mathrm{d}t}-u)\\
+\frac{\mathrm{d^{2}}y}{\mathrm{d}t^{2}}=\delta\frac{\mathrm{D}v}{\mathrm{D}t}-\mu(\frac{\mathrm{d}y}{\mathrm{d}t}-v)\\
+\frac{\mathrm{d^{2}}z}{\mathrm{d}t^{2}}=g-\rho_{w}\frac{\left(V-\xi S\right)}{m}
+\end{matrix}\right.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our simulation, we tried out two different two-dimensional stream equation
+ : 
+\begin_inset Formula 
+\begin{equation}
+\psi=A*cos(a_{x}x+a_{y}y)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $A=2$
+\end_inset
+
+, and 
+\begin_inset Formula $a_{x}=a_{y}=1$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\psi=\sum\psi_{i}\frac{\left\Vert \mathbf{X}-\mathbf{X_{i}}\right\Vert ^{2}}{R_{i}^{2}}e^{-\frac{\left\Vert \mathbf{X}-\mathbf{X_{i}}\right\Vert ^{2}}{R_{i}^{2}}}
+\end{equation}
+
+\end_inset
+
+The first equation creates for small values of A,
+\begin_inset Formula $a_{x}$
+\end_inset
+
+ ,
+\begin_inset Formula $a_{y}$
+\end_inset
+
+ what looks like a chaotic behavior for the buoys.The associated current
+ is a series of vortex close to each other.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second equation is the equation of a stream composed of a multiple water
+ whirl indexed by i.
+ 
+\begin_inset Formula $\mathbf{X_{i}}$
+\end_inset
+
+ is the center of the water whirl i, 
+\begin_inset Formula $\psi_{i}$
+\end_inset
+
+ represents the rotation speed of the whirl, and 
+\begin_inset Formula $R_{i}$
+\end_inset
+
+ represents its range of effect.
+ This representation match correctly the observations of the ocean stream
+ close to the surface.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The simulation will cumpute the dispacement of the buoys using the Euler
+ method.
+ The main drawback of using Euler, is the fact that we have to know the
+ exact duration between every iterations.
+ If it is not the case, after a certain period of time, the positions of
+ the buoys might vary from the reality.
+ However, ROS is able to calculate precisely these durations, making the
+ simulation closer to the reality.
+\end_layout
+
+\begin_layout Chapter
+Simulation architecture
+\end_layout
+
+\begin_layout Section
+ROS presentation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This Section was written by Romain Baronnier
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ROS (Robot Operating System) is the most commonly used middleware in robotic
+ application.
+ The suite was first released in 2007 by Willow Garage, a robotics research
+ lab in California.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename image/ros.png
+	scale 40
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The Middleware are computer software that allow us to develop new program
+ in a modular fashion.
+ It work as an interface between the different block of our programs.
+ It allows programmer to begin writing their code with a basis.The block
+ Architecture facilitate the flow between simulation and reality : changing
+ the simulation block by real data from real sensor doesn't necessitate
+ to change the whole code.
+ Middleware are frequently used in Simulation, Network system and Robotics.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ROS works with a Node architecture, our different blocks become Node in
+ a web of shared Data.
+ Every shared information are Topic that can be broadcasted by Ros's publisher
+ and any node can subscribe to receive update on those informations.Those
+ subscriber can launch Callback function when they receive new data, giving
+ us the possibility to apply traitement to those data.
+ Ros Node can be written in a lot of programming language but the two most
+ commonly used are Python and C++.
+ Moreover as the programs are not directly interfaced but use ROS, we can
+ write some nodes in python and some in C++ and make them communicate without
+ any compatibility problem.
+ We exploited this feature as some of our developper prefer Python while
+ some choose C++.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "language={C++},caption={Simple Publisher},frame=single"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+#include "ros/ros.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "std_msgs/String.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <sstream>
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(int argc, char **argv)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::init(argc, argv, "talker");
+\end_layout
+
+\begin_layout Plain Layout
+
+  /**
+\end_layout
+
+\begin_layout Plain Layout
+
+   * NodeHandle is the main access point to communications with the ROS
+ system.
+\end_layout
+
+\begin_layout Plain Layout
+
+   * The first NodeHandle constructed will fully initialize this node, and
+ the last
+\end_layout
+
+\begin_layout Plain Layout
+
+   * NodeHandle destructed will close down the node.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::NodeHandle n;
+\end_layout
+
+\begin_layout Plain Layout
+
+  /**
+\end_layout
+
+\begin_layout Plain Layout
+
+   * The advertise() function is how you tell ROS that you want to
+\end_layout
+
+\begin_layout Plain Layout
+
+   * publish on a given topic name.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::Rate loop_rate(10);
+\end_layout
+
+\begin_layout Plain Layout
+
+  int count = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (ros::ok())
+\end_layout
+
+\begin_layout Plain Layout
+
+  {
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * This is a message object.
+ You stuff it with data, and then publish it.
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    std_msgs::String msg;
+\end_layout
+
+\begin_layout Plain Layout
+
+    std::stringstream ss;
+\end_layout
+
+\begin_layout Plain Layout
+
+    ss << "hello world " << count;
+\end_layout
+
+\begin_layout Plain Layout
+
+    msg.data = ss.str();
+\end_layout
+
+\begin_layout Plain Layout
+
+    ROS_INFO("%s", msg.data.c_str());
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * The publish() function is how you send messages.
+ The parameter
+\end_layout
+
+\begin_layout Plain Layout
+
+     * is the message object.
+ The type of this object must agree with the type
+\end_layout
+
+\begin_layout Plain Layout
+
+     * given as a template parameter to the advertise<>() call, as was done
+\end_layout
+
+\begin_layout Plain Layout
+
+     * in the constructor above.
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    chatter_pub.publish(msg);
+\end_layout
+
+\begin_layout Plain Layout
+
+    ros::spinOnce();
+\end_layout
+
+\begin_layout Plain Layout
+
+    loop_rate.sleep();
+\end_layout
+
+\begin_layout Plain Layout
+
+    ++count;
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "language={C++},caption={Simple Subscriber},frame=single"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+#include "ros/ros.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+#include "std_msgs/String.h"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void chatterCallback(const std_msgs::String::ConstPtr& msg)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main(int argc, char **argv)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  /*You must call one of the versions of ros::init() before using any other
+\end_layout
+
+\begin_layout Plain Layout
+
+   * part of the ROS system.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::init(argc, argv, "listener");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* NodeHandle is the main access point to communications with the ROS
+ system.
+\end_layout
+
+\begin_layout Plain Layout
+
+   * The first NodeHandle constructed will fully initialize this node, and
+ the last
+\end_layout
+
+\begin_layout Plain Layout
+
+   * NodeHandle destructed will close down the node.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::NodeHandle n;
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* The subscribe() call is how you tell ROS that you want to receive messages
+\end_layout
+
+\begin_layout Plain Layout
+
+   * on a given topic.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* ros::spin() will enter a loop, pumping callbacks.
+  With this version, all
+\end_layout
+
+\begin_layout Plain Layout
+
+   * callbacks will be called from within this thread (the main one).
+  ros::spin()
+\end_layout
+
+\begin_layout Plain Layout
+
+   * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
+\end_layout
+
+\begin_layout Plain Layout
+
+   */
+\end_layout
+
+\begin_layout Plain Layout
+
+  ros::spin();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ROS architecture of the project
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+written by Alaa El Jawad and Sergio Pertierre
+\end_layout
+
+\end_inset
+
+ ROS provides lots of infrastructure, tools and capabilities as it was explained
+ in the previous section.
+ It means that there are so many differents ways to do the same task.
+ So, in this section we will explain using diagrams how ROS was implemented
+ for project SHEPHERD, demonstrating the advantages of using this middleware.
+\end_layout
+
+\begin_layout Standard
+Basically, there are the diagram which shows the general view of the project
+ and then two diagrams presenting the detailed architecture of sailboats
+ and buoys.
+ 
+\end_layout
+
+\begin_layout Subsection
+Overview of the architecture
+\end_layout
+
+\begin_layout Standard
+The diagram below shows the global view of how elements of the project communica
+te between them.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/ros_overview.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Overview of ROS Architecture
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ros_overview"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The node 
+\shape italic
+sim_world
+\shape default
+ sends the message 
+\shape italic
+/worldwind
+\shape default
+ communicating the direction and force of the wind to the sailboats, which
+ use this information for the simulation.
+ Then they send their positions 
+\shape italic
+pose_real
+\shape default
+ to the node 
+\shape italic
+pinger
+\shape default
+.
+ These positions and the position of the buoys are also sent to other nodes
+ for displaying the ensemble.
+ Different method for displaying were implemented, and a node for each one
+ of this method was implemented as well, but this is better explained in
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "section:display"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The node 
+\shape italic
+pinger
+\shape default
+ is an abstraction of the ping sent by the sailboats to inform their position
+ to the buoys.
+ Indeed, in the physical world a ping takes a certain time to travel to
+ the buoy.
+ In the simulation however, we estimate this travel time by knowing the
+ real position of the sailboats and buoy and give this information to the
+ buoy.
+ This information is used to estimate the pose of the buoy using TDOA (as
+ explained in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "section:tdoa"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Subsection
+Detailled architecture of sailboats and buoys
+\end_layout
+
+\begin_layout Standard
+Every buoy and sailboat basically works the same way.
+ There are three main nodes that do most of the computation needed for the
+ simulation of one of these components (see diagram 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ros_buoy"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ros_sailboat"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Simulation node:
+\series default
+ this node handles the simulation of the robot (sailboat or buoy - see chapter
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "section:simulation"
+
+\end_inset
+
+).
+ It subscribes to the environment parameters and the command published by
+ the regulator.
+ Then it simulates the robot for a time step and publishes the real state
+ of the robot and a noisy state that corresponds to the information given
+ by the sensors.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Localisation node:
+\series default
+ this node handles the localisation of the robot.
+ It subscribes to the noisy state of the robot (i.e.
+ the information given by the sensors), estimates and publishes the position
+ of the robot.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Regulation node:
+\series default
+ this node regulates the robot according to the objective it was given.
+ It subscribes to the position of the robot, deduces the command to correct
+ the trajectory and publishes it.
+ 
+\end_layout
+
+\begin_layout Standard
+Also, in both cases the real poses are published so that the pinger and
+ the display nodes know exactly where are the elements.
+ However there are small differences between the sailboat and the buoy.
+\end_layout
+
+\begin_layout Standard
+In the case of the buoy (see figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ros_buoy"
+
+\end_inset
+
+), the localisation subscribes to the ping and the depth sensors.
+ The ping is sent by the pinger (see previous section).
+ The depth sensors is simulated by the buoy simulator.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/ros_buoy.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Buoy ROS Architecture
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ros_buoy"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the case of the sailboat (see figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ros_sailboat"
+
+\end_inset
+
+) the simulation node needs to subscribe to the environment to know informations
+ about the wind (force and direction) to simulate the sailboat.
+ The regulation node also need informations about the wind direction and
+ the center of the triangle the sailboat needs to follow.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/ros_sailboat.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sailboat ROS Architecture
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ros_sailboat"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Display
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "section:display"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulink 3D Animation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The section "5.1 Simulink 3D Animation" was written by Lei Zhu.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+The Simulink 3D Animation product is a solution for interacting with virtual
+ reality virtual systems models over time.
+ It extends the capabilities of Simulink and MATLAB software into the world
+ of virtual reality.
+ The product provides a complete environment of creation, development and
+ realization of 3D visual simulations.
+ Comparing to other display method, the most significant of Simulink 3D
+ Animation is its simplicity to starters.
+ With around 10 lines of code or a simple control flow under Simulink, it
+ can already generate a 3D simulation, which means we can easily use Simulink
+ blocks and MATLAB apps and functions for connecting models to virtual reality
+ worlds.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simu3dan"
+
+\end_inset
+
+ shows a sailboat simulation with a simple Simulink control flow.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/simu3dan.jpg
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A sailboat simulation with simulink 3d Animation
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simu3dan"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A beginner can do a visualization of real-time simulations after tens of
+ minutes study.
+ That is an advantage if we just have not much time to simulate, especially
+ it is on 3D.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+How does it work ?
+\end_layout
+
+\begin_layout Standard
+It works by providing applications to link Simulink and MATLAB algorithms
+ to 3D graphics objects.
+ It allows us to view and check the dynamic behavior of the system in a
+ virtual reality environment.
+ The objects are represented in Virtual Reality Modeling Language (VRML),
+ a standard 3D modeling language.
+ We can animate a 3D world by changing its position, rotation, scale, and
+ other object properties during desktop or real-time simulation.
+ We can also inject virtual sensor signals and access the 3D animation data
+ in Simulink or MATLAB for post-processing.
+ Simulink 3D Animation includes viewers for rendering and interaction with
+ virtual scenes.
+ With 3D World Editor, we can create detailed scenes assembled from 3D models
+ exported from CAD or web-based sources.
+ We can incorporate multiple 3D scene views into the MATLAB figures and
+ interact with these views by a hardware device as simple as a mouse.
+\end_layout
+
+\begin_layout Section
+Matplotlib
+\end_layout
+
+\begin_layout Subsection
+Presentation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by N.Mehdi 
+\end_layout
+
+\end_inset
+
+ Matplotlib, created by John Hunter (1968-2012), is a Python 2D plotting
+ library composed of several toolkits like 3D plotting, real-time plotting,
+ mapping toolkits and more.
+ With NumPy, Python provides an object oriented API for data programming
+ and scientific visualizations sharing some features with MATLAB.
+\end_layout
+
+\begin_layout Subsection
+Operating Structure and Code Elements
+\end_layout
+
+\begin_layout Standard
+Displaying a simple looking animation with matplotlib was the easier way
+ to obtain an animated representation of the simulation running under ROS.
+ To do so, we had to just create a ROS package dedicated to plotting a 2D
+ simulation.
+ It was one of the strengths to use Python and the associated libraries.
+ Everything is running under the ROS ecosystem and we do not need to export
+ the data from the simulation toward an external program.
+ We access the data through regular subscribers.
+ For more details on how the different ROS packages including the Python
+ display, we could refer to the Chapter 4 Section 4.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/index.jpg
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "Flow"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Messages flow between the simulation and the display 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Code Structure
+\end_layout
+
+\begin_layout Standard
+The whole code used for the Matplotlib display is inside the dedicated ROS
+ package.
+ Each element, from the sailboats to the buoys, is represented by an instance
+ of the 
+\shape italic
+PoseHolder
+\shape default
+ class which is the mother-class of 
+\shape italic
+SailboatPoseHolder
+\shape default
+ and 
+\shape italic
+BuoyPoseHolder
+\shape default
+.
+ This family of classes contains the objects which will be influenced by
+ the environment like the wind direction and regulated by the controller.
+ For the sailboat, the parameters are x, y and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ while the buoy location is represented by x, y and z.
+ Each object has a parameter history for each component, allowing the regulator
+ to access to the previous locations of the objects.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ string=[s]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, stringstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{green}
+\end_layout
+
+\end_inset
+
+, comment=[l]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, commentstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{blue}
+\end_layout
+
+\end_inset
+
+, keywordstyle=
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{green!40!black}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "caption={PoseHolder Class},frame=single,language=Python"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+class PoseHolder(object):
+\end_layout
+
+\begin_layout Plain Layout
+
+    """docstring for SailboatPoseHolder"""
+\end_layout
+
+\begin_layout Plain Layout
+
+    MAX_HIST_SIZE = 500
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    def __init__(self, pose):
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.pose = pose
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histX = []
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histY = []
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histT = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    def update_hist(self, x, y, theta):
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histX.append(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histY.append(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+        self.histT.append(theta)
+\end_layout
+
+\begin_layout Plain Layout
+
+        if len(self.histX) > PoseHolder.MAX_HIST_SIZE:
+\end_layout
+
+\begin_layout Plain Layout
+
+            del(self.histX[0])
+\end_layout
+
+\begin_layout Plain Layout
+
+        if len(self.histY) > PoseHolder.MAX_HIST_SIZE:
+\end_layout
+
+\begin_layout Plain Layout
+
+            del(self.histY[0])
+\end_layout
+
+\begin_layout Plain Layout
+
+        if len(self.histT) > PoseHolder.MAX_HIST_SIZE:
+\end_layout
+
+\begin_layout Plain Layout
+
+            del(self.histT[0])
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Different functions allows to update the parameters calculated by the simulation
+ package and read by the publisher.
+ These update functions are called in a 
+\shape italic
+while
+\shape default
+ loop, animating the different objects on the display.
+ The principal update methods are given in the following.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "caption={Update Functions},frame=single,language=Python"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+def update_disp(msg, name):
+\end_layout
+
+\begin_layout Plain Layout
+
+    global sailboats, buoys
+\end_layout
+
+\begin_layout Plain Layout
+
+    # print 'Updating', sailboat_name
+\end_layout
+
+\begin_layout Plain Layout
+
+    # print('[INFO] updating : {}'.format(name))
+\end_layout
+
+\begin_layout Plain Layout
+
+    if name in sailboats:
+\end_layout
+
+\begin_layout Plain Layout
+
+        # print('[INFO] Adding new sailboat pose : {}'.format(name))
+\end_layout
+
+\begin_layout Plain Layout
+
+        sailboats[name].add_new_pose(msg.pose)
+\end_layout
+
+\begin_layout Plain Layout
+
+    else:
+\end_layout
+
+\begin_layout Plain Layout
+
+        buoys[name].add_new_pose(msg)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def update_wind(msg):
+\end_layout
+
+\begin_layout Plain Layout
+
+    global wind_dir, wind_strength
+\end_layout
+
+\begin_layout Plain Layout
+
+    wind_dir, wind_strength = msg.wind_angle, msg.wind_strength
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def update_center(msg, name):
+\end_layout
+
+\begin_layout Plain Layout
+
+    global sailboats, buoys
+\end_layout
+
+\begin_layout Plain Layout
+
+    # print 'Updating center', sailboat_name
+\end_layout
+
+\begin_layout Plain Layout
+
+    if name in sailboats:
+\end_layout
+
+\begin_layout Plain Layout
+
+        sailboats[name].cx = msg.data[0]
+\end_layout
+
+\begin_layout Plain Layout
+
+        sailboats[name].cy = msg.data[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+    else:
+\end_layout
+
+\begin_layout Plain Layout
+
+        pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sea Plot Utility
+\end_layout
+
+\begin_layout Standard
+A separate module called 
+\shape italic
+sea_plot_utility
+\shape default
+ was used to provide the drawing functions.
+ Each function within gives a Numpy array (vector or matrix), which is called
+ in the main file for each drawn objects.
+ 
+\end_layout
+
+\begin_layout Subsection
+Result
+\end_layout
+
+\begin_layout Standard
+Once the launch files executed, we have the following display.
+ The sailboats leave a green trail behind them and the opacity of the buoys
+ represent the depth and the black arrow gives the wind direction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/display3.png
+	scale 40
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "Flow"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Display with matplotlib plotting 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+OpenGl
+\end_layout
+
+\end_inset
+
+OpenGL
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section 5.2 written by Pierre BENET
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/opengl.jpeg
+	scale 30
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/SDL.jpeg
+	scale 30
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Presentation
+\end_layout
+
+\begin_layout Standard
+Open Graphics Library (OpenGL) is a cross-language, cross-platform application
+ programming interface (API) for rendering 2D and 3D vector graphics.
+ The API is typically used to interact with a graphics processing unit (GPU),
+ to achieve hardware-accelerated rendering.
+\end_layout
+
+\begin_layout Standard
+We chose to use OpenGl 1.1 as a soft and reliable 3d rendering system.
+ OpenGl is a low level rendering library.
+ Unlike high level graphic engine such as Unity, it is easy to print vector
+ fields and soft graphic that are easy to see.
+ With realistic graphics, it can be difficult to see the data between the
+ reflects of the light and the real opacity of watter for example.
+ With Opengl, transparency of watter can be adjusted for a better visualization.
+\end_layout
+
+\begin_layout Standard
+OpenGl does not work alone.
+ It has to be integrated in the window manager of the operating system.
+ An open source library SDL (Simple Direct media Layer) enables to use the
+ graphic interface of most of the operating systems.
+ Moreover, it provides keyboards and mouse support so that the user can
+ navigate in the 3d environment and interact with the window.
+ SDL provides also a lot of features such as sound handling and other device
+ support.
+\end_layout
+
+\begin_layout Subsection
+3d features
+\end_layout
+
+\begin_layout Standard
+The 3d geometric object that we print are the sea, the boats, the buoys,
+ the vector fields, the grid pattern and the localisations of the intervals.
+ The sea is made of two layer of transparent blue sqares, so that looking
+ to the sea from the outside looks darker that from the inside.
+ And everything that is in the sea looks blue.
+ The boats geometry have been recovered from an older sailboat control simulatio
+n.
+ The veil and rudder are movable.
+ The buoys are simple red spheres.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% IMAGE: shepherd opengl rendering
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/shepherd_opengl.png
+	scale 40
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+simulation rendering with opengl and SDL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Camera control
+\end_layout
+
+\begin_layout Standard
+The camera control system is a first person view.
+ The camera can be controlled in the six local axis of the view (three rotations
+ and three translations) thanks to the mouse.
+ This enables a practical and intuitive navigation in all directions.
+\end_layout
+
+\begin_layout Standard
+The mouse wheel enables to move forward and backward.
+ holding the left mouse button of the camera while moving the mouse moves
+ the scene perpendicularly to the camera.
+ holding the right mouse button while moving the mouse rotates the camera
+ on an axis perpendicular to the camera axis.
+ holding both right and left button enables to rotate the camera on its
+ axis.
+\end_layout
+
+\begin_layout Standard
+Camera handling is often used by an extern 3 by 3 matrix system that has
+ to be implemented.
+ However, this time, only the OpenGl transformation system has been used
+ to control the camera.
+ OpenGl possessed its own matrix 4 by 4 stack that includes rotation and
+ translation and also includes multiplication function and generation of
+ basic matrix such as rotation and translation matrix.
+ The purpose of this matrix stack is to apply successive affine transformation
+ to the geometry.
+ But we can use it as a computationnal tool.
+ OpenGl provides a function to store in our program the current transformation
+ matrix.
+ So to compute matrix multiplication and rotation matrix generation, we
+ will store the current matrix transformation in a variable; load the matrix
+ we want on the OpenGl matrix stack; compute transformations; get the result
+ in an other variable; put back the initial transformation result so that
+ OpenGl has seen nothing.
+\end_layout
+
+\begin_layout Subsection
+Communication with the Simulation
+\end_layout
+
+\begin_layout Standard
+The communication between the simulation and the OpenGl rendering is a client-se
+rver link.
+ The simulation is a server on which the OpenGl display connects.
+ As the OpenGl display is soft and very compatible, it can be run on any
+ distant computer, while the simulation need ROS to run.
+\end_layout
+
+\begin_layout Standard
+The communication is binary, allowing a very effective communication.
+ The client and the server know the data structures and just copy part of
+ the communication buffer into structures.
+ The structures are composed of the state variables of the Buoys and Sailboats.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "language={C++},caption={display opengl communication structures},frame=single"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+class Sailboat0
+\end_layout
+
+\begin_layout Plain Layout
+
+{	
+\end_layout
+
+\begin_layout Plain Layout
+
+    public:	
+\end_layout
+
+\begin_layout Plain Layout
+
+        double x,y,theta,phi;// position and orientation
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+        double fg,fv,gamma,deltav,deltag,deltavmax;  //link variables
+\end_layout
+
+\begin_layout Plain Layout
+
+        double a,psi;// wind            
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\end_layout
+
+\begin_layout Plain Layout
+
+        double cx,cy;// triangle center
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+class Buoy0
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    public:
+\end_layout
+
+\begin_layout Plain Layout
+
+        double x;// position x
+\end_layout
+
+\begin_layout Plain Layout
+
+        double y;// position y
+\end_layout
+
+\begin_layout Plain Layout
+
+        double z;// position z
+\end_layout
+
+\begin_layout Plain Layout
+
+        double Xdot[3];// Buoy speed
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Unity3D
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% IMAGE: Logo Unity*
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename image/unity-logo.png
+	scale 5
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Presentation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Anthony Welte and Camille Soulié
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unity3D is a game engine developed by Unity Technologies.
+ It is widely used in the development of video games, especially on mobile
+ devices and websites because it is one of the most lightweight game engine
+ available.
+ It uses the aforementioned OpenGL API to use the processing power of the
+ machine it is installed on.
+ It also provides an abstraction level allowing the programmer to easily
+ add 3D Objects in a scene, manage lighting and shading options, textures,
+ sound effects and many other functionalities.
+ Unity also offers a physics engine that can compute collision, gravity
+ as well as more complicated patterns such as moving cloth and water.
+\end_layout
+
+\begin_layout Standard
+In our project we use Unity as a graphical engine, it was decided not to
+ use the physic engine in order to have complete control over the behaviors
+ of the sailboats and buoys.
+ The simulation program computes the state of the world, this is then send
+ to Unity that displays the new state of the world.
+ Because Unity is intended to be used more as a pleasing graphical tool
+ than a exact representation of the simulation, liberties may have been
+ taken on the position of the objects in order to obtain smoother movements.
+\end_layout
+
+\begin_layout Standard
+Finally Unity provides powerful libraries which allow us to display a very
+ realistic simulation.
+ However the position of the objects on the screen depends on the frame
+ rate which depends of the platform used to display the simulation.
+ Therefore the display may be delayed compared to the simulation.
+ In fact, the purpose of Unity in this project was mainly to render the
+ simulation with a high graphic realism and this may be an additional asset
+ to eventually convince a customer more easily.
+ Furthermore the use of Unity3D can be extended with virtual reality since
+ it is compatible with some VR devices such as the Oculus Rift or the HTC
+ Vive.
+\end_layout
+
+\begin_layout Subsection
+The Environment of Simulation
+\end_layout
+
+\begin_layout Subsubsection
+Graphical Objects
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by P.Martin and Z.El Abdalaoui
+\end_layout
+
+\end_inset
+
+ As it has been said Unity gives us a great freedom in the creation of environme
+nt even with the free version.
+ Thanks to a large number of librairies (more precisely called assets) it
+ is possible to create a realistic scene using water,trees,skybox,ground
+ modeling etc.
+ In our project the main purpose was that Ifremer's team could recognize
+ something like the "Rade de Brest" with its huge bridge, coasts ,Ifremer's
+ building.
+ On the whole, the scene has been created in 4 stages.
+\end_layout
+
+\begin_layout Itemize
+The first step has been the creation of the ground.
+ Unity provides a large range of tools allowing different modifications
+ of ground's shape.So, we create our plane as a GameObject, then we can add
+ on it several components.
+ In order to create a wide area of sand we added a sand texture, it is just
+ a jpg file which will be repeated many times on the plane.
+ Like that the plane looks like a real (almost) sea floor.
+ 
+\end_layout
+
+\begin_layout Itemize
+Now that the texture applicated, it is possible to model the terrain on
+ our own.
+ For this we used a very useful tool.
+ Thanks to this feature, changing the elevation (relief) of our plane.
+ This works like a brush.
+ We can define it size (diameter) and the maximum altitude reached by the
+ plane.
+ It exists several brushes, some create peaks, others just elevated platforms.
+ It is really interesting to model his own plane.
+ you can spend several hours on this task if you want details.
+ Finally here modeling yields this result:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% IMAGE: modeling plane + initial plane
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/unity2.jpg
+	scale 40
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plane with texture and after modeling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The next step consists in adding the main asset of the project.
+ It is not exactly a long step because water plane is already a very powerful
+ asset implemented in Unity.
+ This one allows us to display a very realistic sea plane.
+ We decided to put a reflective water mode.
+ It means that only the sky is reflected on the surface and the water is
+ not transparent too.
+ Several water assets exist in unity, some of them are able to generate
+ waves, movement on the water.
+ However in this project we decided to leave these modules and just keep
+ a simple water.
+ A calm ocean.
+\end_layout
+
+\begin_layout Itemize
+To create a realist scene, we need environment (ground,water,sky..) but also
+ need some 3D objects like building, bridge or road.
+ For this part the community helped us.
+ Indeed thanks to the online 3D library TF3D people share their creation.
+ To display Ifremer's building we used a 3D object representing building
+ which look like Business Office, then to remember the "Rade of Brest" we
+ used a huge bridge.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It is possible and easy to import in Unity stl files or 3D files or Blender
+ files.
+ Keep in mind that we used Unity for the represention and for the graphic
+ performances.
+ However it is really hard to draw or model an accurate object as a boat,or
+ a car with simple assets.
+ (square,plane,circle..) Thus, working on Unity invited us to work on other
+ software (which we did not master or never used at all).
+ This was actually interesting to discover Blender and all the abilities
+ it provides for 3D modeling,Video making, visual rendering etc.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% IMAGE: d'un objet
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Buoy (left) and Sailboat (right) models
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename image/buoy.jpg
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename image/Sailboat.jpg
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Finally, the last object to control is the camera.
+ Indeed in Unity you can see how does your scripts or your objects behave
+ in the scene with a Camera item.
+ It was crutial for the project in order to observe how our boats and buoys
+ move to drive the camera.
+ We control our camera with the keyboard for the elevation, and the left
+ right turns .And the rotation is controlled with the mouse.
+ We also created a script which allow us to displace the camera as we want.
+ 
+\end_layout
+
+\begin_layout Standard
+In short, the creation of the scene is a long process because it always
+ need some adjustements.
+ Please find in the 5.3.5 part the final result of our scene.
+ We can note that even if the result is acceptable we tried to improve it.
+ We tested on script of buoyancy in order to simulate the real boat's movement
+ on the ocean.
+ However that script was not easy to use , so we gave up on this way because
+ it was really hard to control the flux of waves (back and forth).
+ Then we could add the rotation of the sail as a function of the wind.
+ This idea was envisaged, and was not difficult to implement, but we left
+ it aside in order to focus on the localisation of the squad.
+ Finally the final scene is really sufficient and the project seems greatly
+ correspond to expectations even if Unity allows to us to improve it again
+ and again.
+\end_layout
+
+\begin_layout Subsubsection
+Buoy and Sailboat creation
+\end_layout
+
+\begin_layout Standard
+After creating the environment in which the boats and the buoys will move,
+ we need the actual object to display in the scene 
+\end_layout
+
+\begin_layout Itemize
+As previousely mentionned, the Unity3D community shares many game objects
+ of their own to use.
+ We used one of these assets found online to represent the sailboats onscreen.
+ But we had to add some more textures to create a realistic sailboat.
+ For instance, since the textures are only seeable from one side, only one
+ side of the sail was displayed.
+ Then to be able to move the sail yaw, we had to split it from the original
+ game object in order to make the sail movable around the mast.
+\end_layout
+
+\begin_layout Itemize
+The adding of the buoy was much more simple.
+ First we tried to draw the buoy from scratch but as explained in the previous
+ part, it is not something easy to do with the time at our disposal.
+ But in the end we were provided with a 3D CATIA model of a buoy similar
+ to the one usually used.
+ Then we just had to import the model on Unity to display it.
+ 
+\end_layout
+
+\begin_layout Standard
+Once the creation of the objects and the scene were done, we could link
+ them to the client-server architecture that manage the position of all
+ the items onscreen.
+ (ie the position of the boats and buoys, the depth of the buoys, the sailboat,
+ and sail yaw.) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+SimulationManager
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Anthony Welte and Camille Soulié
+\end_layout
+
+\end_inset
+
+ SimulationManager is the main object of the scene.
+ It has two scripts TCPServer.cs and SimulationManager.cs that provide communicati
+on with the simulation and dynamically instanciate the objects (sailboats
+ and buoys).
+\end_layout
+
+\begin_layout Standard
+TCPServer.cs is the implementation of the client-server architecture.
+ It listens to the simulation and records a stream of one or several JSON
+ strings.
+ This stream is then processed to extract individual JSON string that are
+ then sent to SimulationManager.cs.
+\end_layout
+
+\begin_layout Standard
+SimulationManager.cs extracts the data of the messages received from TCPServer.cs
+ and stores them in a queue.
+ Then at every new frame displayed, SimulationManager dequeues a message
+ (if there is one) and updates the scene.
+ It either creates a new object if the message corresponds to a new object
+ or updates the state of an existing entity.
+ We have tried to interpolate the position of the different entities between
+ two received positions in order to reduce the number of messages sent by
+ the simulation but this was more complicated than predicted and this functional
+ity is not fully operational yet.
+ That is why we have chosen for now to increase as much as possible the
+ data flow between the server and the client in order to have the most fluid
+ display possible.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Communication with the simulation
+\end_layout
+
+\begin_layout Subsubsection
+Server-Client link
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Anthony Welte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To communicate between the simulation and Unity, a client-server architecture
+ has been chosen.
+ This choice has several advantages: 
+\end_layout
+
+\begin_layout Itemize
+A modular architecture: enabling the two programs to work independently
+ and making the development of the programs easier to split into two separate
+ teams.
+ 
+\end_layout
+
+\begin_layout Itemize
+An online architecture: enabling the programs to run on a same machine or
+ on distant machines 
+\end_layout
+
+\begin_layout Itemize
+A language agnostic architecture: enabling the simulation and the display
+ to use different languages (C++ for the simulation, C# for Unity) 
+\end_layout
+
+\begin_layout Subsubsection
+JSON format
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Anthony Welte
+\end_layout
+
+\end_inset
+
+ To communicate data, JSON parsing is used.
+ This method format variables (test, numbers, etc) into a text that contains
+ all the variables and that can be easily extracted by Unity.
+ JSON was introduced by Javascript but libraries are know available on most
+ mainstream languages making it an ideal solution to communicate data between
+ two languages
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstset
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ string=[s]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, stringstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{blue}
+\end_layout
+
+\end_inset
+
+, comment=[l]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, commentstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+color{black}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\lstlistingname}{Code}
+\end_inset
+
+ 
+\begin_inset listings
+lstparams "caption={JSON format},frame=single"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    "Sailboat":
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        "name":"Auv0",
+\end_layout
+
+\begin_layout Plain Layout
+
+        "sailYaw":-13.1802,
+\end_layout
+
+\begin_layout Plain Layout
+
+        "x":-19.2049,
+\end_layout
+
+\begin_layout Plain Layout
+
+        "y":20.338,
+\end_layout
+
+\begin_layout Plain Layout
+
+        "yaw":-296.908
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This formating made it easy to add a the buoys later in the project.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Camille Soulié
+\end_layout
+
+\end_inset
+
+ Since the aim of this part of the project is to display a scene, the results
+ of our work is better described by images than by words.
+ You can see below a screenshot of a scene displayed with Unity that gives
+ an good overview of what have been done.
+ We can notice the high realism of the display.
+ Unity can indeed handle the shadows, the reflects, the ripples on the water...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Screenshot of a scene displayed with Unity3D
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename image/DisplayUnityResult.jpg
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% IMAGE
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Thought for enhancement
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by Camille Soulié
+\end_layout
+
+\end_inset
+
+ As mentioned earlier, one way to optimize the display of the simulation
+ might consist in in interpolating the position of the entities between
+ two successive positions and therefore in drastically reducing the data
+ flow between the client and the server.
+ That will enable both more fluidity and the workload decrease of unity.
+ We can also add some textures on the entities or some atmosphere sounds
+ like seagull calls, sail slams, slappings...
+ to increase the realism.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ===================== Conclusion ====================
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size largest
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Conclusion
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Section written by M.
+ Fadil Ennouhi and L.
+ Zhu, reviewed by Simon Chanu
+\end_layout
+
+\end_inset
+
+ In this project, we constructed a mathematical model as well as a simulation
+ with visual display.
+ At the very beginning, all the theoretical basic concerned are reviewed.
+ We have used the method of interval analysis and TDOA, by which we built
+ the basic equations.
+ Next, we did several studies on the tools for better work condition and
+ parfait group cooperation.
+ Tools like GitHub and scrum bring us more efficiency .
+ We worked as a group rather than only work separately on each party.
+ Furthermore, we constructed the architecture to solve the simulation problem
+ and let it be optimized.
+ We have used ROS(Robot Operating System) as the kernel instrument.
+ We simulated the environment, the boat and the buoys under ROS.
+ At last we did some visual model on 2D and 3D platform.
+ This allow us to explain the simulation to the public.
+ The production of this experiment is quite useful in further researches.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Despite of the ambitious nature of the SHEPHERD project, we remain confident
+ of its feasibility.
+ All the assumptions made in our working simulation remain compatible with
+ the real world environment.
+ We demonstrated in this report a working simulated prototype relying solely
+ on existing techniques and sensors.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned, the Robot Operating System coupled with GitHub enabled our
+ relatively large team to work independently in small groups and each group
+ handled a specific module of the project without risking the compatibility
+ of the pieces.
+ Perhaps the most noteworthy example of this seamless integration is the
+ Unity video rendering which allows the viewer to quickly grasp the functioning
+ and the purpose of the project while remaining faithful to the algorithms
+ and physics of the project.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We got a great deal of progress from working on this project.
+ In the three months of activity, first of all, the most direct acquisition
+ is on the professional techniques.
+ We did not only practice the knowledge acquired in class, such as interval
+ analysis, but also made ourselves more skilled by learning numerous new
+ skills.
+ We had 17 different mini courses in a variety of subjects.
+ And each one gave us an opportunity to optimize our processes of work.
+ In addition, we worked three months in a cooperative environment.
+ Working as a team is not easy as imagined but we achieved this successfully.
+ Solidarity and cooperation are the fruit for the effort we had payed.
+ Last but not the least, we experienced what a real project looks like.
+ It is more close to a professional job, thus making us better and faster
+ at adapting to a working life and rhythm after graduation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ====================== Biblio ======================
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%choix du style de la biblio
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+bibliographystyle{plain}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%inclusion de la biblio
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+bibliography{Rapport2A}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%voir wiki pour plus d'information sur la syntaxe des entrées d'une bibliographi
+e
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% ====================== Annexes ======================
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[12cm]
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+\size largest
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+uppercase
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Annexes
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[12cm]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
